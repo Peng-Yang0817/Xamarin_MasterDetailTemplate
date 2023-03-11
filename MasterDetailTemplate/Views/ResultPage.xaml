@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MasterDetailTemplate.Views.ResultPage"
+             xmlns:b="clr-namespace:Behaviors;assembly=Behaviors"
+             xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:Local_Converters="clr-namespace:MasterDetailTemplate.Converters;assembly=MasterDetailTemplate"
+             BindingContext="{Binding ResultPageViewModel ,Source={StaticResource ViewModelLocator}}">
+
+    <!--註冊轉換器-->
+    <ContentPage.Resources>
+        <Local_Converters:ItemTappedEventArgsToPoetryConverter x:Key="ItemToPoetry"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <b:EventHandlerBehavior EventName="Appearing">
+            <b:ActionCollection>
+                <b:InvokeCommandAction Command="{Binding PageAppearingCommand}"/>
+            </b:ActionCollection>
+        </b:EventHandlerBehavior>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        
+        <ListView ItemsSource="{Binding PoetryCollection}">
+            <ListView.Behaviors>
+                <scroll:InfiniteScrollBehavior/>
+                <b:EventHandlerBehavior EventName="ItemTapped">
+                    <b:ActionCollection>
+                        <b:InvokeCommandAction Command="{Binding PoetryTappedCommand}"
+                                               Converter="{StaticResource ItemToPoetry}"/>
+                    </b:ActionCollection>
+                </b:EventHandlerBehavior>
+            </ListView.Behaviors>
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}"
+                              d:Text="{Binding}"
+                              Detail="{Binding Snippet}"
+                              d:Detail="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.Footer>
+                <StackLayout Padding="8">
+                    <Label d:Text="正在載入"
+                           Text="{Binding Status}"
+                           HorizontalOptions="Center"></Label>
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+
+    </ContentPage.Content>
+</ContentPage>

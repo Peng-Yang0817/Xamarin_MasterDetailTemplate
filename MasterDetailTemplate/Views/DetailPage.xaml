@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterDetailTemplate.Views.DetailPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:Local_Service="clr-namespace:MasterDetailTemplate.Services;assembly=MasterDetailTemplate"
+             xmlns:Local_Converters="clr-namespace:MasterDetailTemplate.Converters;assembly=MasterDetailTemplate"
+             BindingContext="{Binding DetailPageViewModel,Source={StaticResource ViewModelLocator}}"
+             Local_Service:NavigationContext.NavigationParameter="{Binding Poetry}">
+
+    <!--註冊轉換器-->
+    <ContentPage.Resources>
+        <Local_Converters:LayoutToTextAlignmentConverter x:Key="LayoutToAlignment"/>
+        <Local_Converters:TextIndentConverter x:Key="TextIndent"/>
+    </ContentPage.Resources>
+    
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="8">
+                
+                <Label FontSize="18"
+                       Margin="0,0,0,8"
+                       HorizontalOptions="Center"
+                       d:Text="小重山"
+                       Text="{Binding Poetry.Name}"
+                       />
+                
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Margin="0,0,0,8">
+                    <Label FontSize="12"
+                           d:Text="宋"
+                           Text="{Binding Poetry.Dynasty}"/>
+                    <Label FontSize="12"
+                           Text="。"/>
+                    <Label FontSize="12"
+                           d:Text="劉亦菲"
+                           Text="{Binding Poetry.AuthorName}"/>
+                </StackLayout>
+                
+                <!-- 
+                    透過實作的 IvalueConverter 實現的的Convert方法，
+                    會自動將前面Binding Poetry.Layout的值方到Convert方法內，
+                    取得回傳值並給予HorizontalTextAlignment。
+                -->
+                <Label FontSize="18"
+                       Margin="0,0,0,8"
+                       HorizontalTextAlignment="{Binding Poetry.Layout,
+                                                 Converter={StaticResource LayoutToAlignment}}"
+                       Text="{Binding Poetry.Content,
+                                Converter={StaticResource TextIndent}}"/>
+                <!--
+                <Label FontSize="18"
+                       Margin="0,0,0,8"
+                       HorizontalTextAlignment="{Binding Poetry.Layout,
+                                                 Converter={StaticResource LayoutToAlignment}}"
+                       Text="{Binding Poetry.Content}"
+                       d:Text="柳暗花明春事深。\n小嫣紅芶藥,已抽斟。\n雨餘風軟碎名禽。\n遲遲日，猶帶一分陰。"/>
+                -->
+            </StackLayout>
+        </ScrollView> 
+    </ContentPage.Content>
+</ContentPage>

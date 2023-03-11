@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterDetailTemplate.Views.LoginAndLogoutPage"
+             Title="用戶介面">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                
+                <StackLayout x:Name="StackLayout_UserLoginFirst">
+                    <Frame BackgroundColor="White" BorderColor="Gray" CornerRadius="8" Margin="20">
+                        <StackLayout VerticalOptions="CenterAndExpand" Padding="30, 30, 30, 0">
+                            <Label Text="用戶登入" FontSize="24" HorizontalOptions="Center" />
+                            <Entry x:Name="Login_Email"
+                                    Placeholder="Email" Keyboard="Email" Margin="0, 20, 0, 0" />
+                            <Entry x:Name="Login_Password"
+                                    Placeholder="Password" IsPassword="true" Margin="0, 20, 0, 0" />
+                            <Button Text="登入" Clicked="Button_Login_Clicked" Margin="0, 20, 0, 0" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="White" BorderColor="Gray" CornerRadius="8" Margin="20">
+                        <StackLayout 
+                                VerticalOptions="CenterAndExpand" Padding="30, 30, 30, 0">
+                            <Label Text="新用戶註冊" FontSize="24" HorizontalOptions="Center" />
+                            <Entry Placeholder="Username" Keyboard="Text" Margin="0, 20, 0, 0" />
+                            <Entry Placeholder="Password" IsPassword="true" Margin="0, 20, 0, 0" />
+                            <Entry Placeholder="Email" Keyboard="Email" Margin="0, 20, 0, 0" />
+                            <Entry Placeholder="Line ID" Keyboard="Text" Margin="0, 20, 0, 0" />
+                            <Button Text="送出" Clicked="Button_Register_Clicked" Margin="0, 20, 0, 0" />
+                        </StackLayout>
+                    </Frame>
+
+                </StackLayout>
+
+                <StackLayout x:Name="StackLayout_UserCanLogoutNow">
+                    <Frame BackgroundColor="White" BorderColor="Gray" CornerRadius="8" Margin="20">
+                        <StackLayout>
+                            <Label Text="帳戶登出"
+                               FontSize="24" HorizontalOptions="Center" 
+                               VerticalOptions="CenterAndExpand" />
+
+                            <Button Text="登出" Clicked="Button_Logout_Clicked" Margin="0, 20, 0, 0" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
