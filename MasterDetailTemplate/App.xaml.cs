@@ -9,6 +9,7 @@ namespace MasterDetailTemplate
     public partial class App : Application
     {
         public string LogStatus = "LogStatus";
+        public string UserName = "UserName";
         public App()
         {
             InitializeComponent();
@@ -16,6 +17,10 @@ namespace MasterDetailTemplate
             if (!Properties.ContainsKey(LogStatus))
             {
                 Properties[LogStatus] = "false";
+            }
+            if (!Properties.ContainsKey(UserName))
+            {
+                Properties[UserName] = "NULL";
             }
 
             DependencyService.Register<MockDataStore>();

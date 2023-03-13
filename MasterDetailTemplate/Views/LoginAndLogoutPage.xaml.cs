@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Collections.Specialized;
 using System.Net;
+using MasterDetailTemplate.Models.LoginAndLogoutPage;
 
 namespace MasterDetailTemplate.Views
 {
@@ -20,9 +21,10 @@ namespace MasterDetailTemplate.Views
     public partial class LoginAndLogoutPage : ContentPage
     {
 
-
         public App app = Application.Current as App;
         public string LogStatus = "LogStatus";
+        public string UserName = "UserName";
+        public string LoginUser = "";
 
         public LoginAndLogoutPage()
         {
@@ -44,8 +46,15 @@ namespace MasterDetailTemplate.Views
         /// </summary>
         public void Button_Logout_Clicked(object sender, EventArgs args)
         {
+            Create_Username.Text = "";
+            Create_Password.Text = "";
+            Create_Email.Text = "";
+            Create_LineID.Text = "";
+
+            label_UserName.Text = "";
 
             app.Properties[LogStatus] = "false";
+            app.Properties[UserName] = "NULL";
             app.SavePropertiesAsync();
             DisplayAlert("已經登出",
                        "登出了~~~~",
@@ -57,18 +66,34 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 用戶註冊功能
         /// </summary>
-        public void Button_Register_Clicked(object sender, EventArgs args)
+        public async void Button_Register_Clicked(object sender, EventArgs args)
         {
-            if (true == true)
+            // 取得 XAML 中的 Entry 物件 ，並將當前內容取出
+            Entry create_Username = (Entry)FindByName("Create_Username");
+            string Create_Username = create_Username.Text;
+
+            Entry create_Password = (Entry)FindByName("Create_Password");
+            string Create_Password = create_Password.Text;
+
+            Entry create_Email = (Entry)FindByName("Create_Email");
+            string Create_Email = create_Email.Text;
+
+            Entry create_LineID = (Entry)FindByName("Create_LineID");
+            string Create_LineID = create_LineID.Text;
+
+            var returnMsg = await GetMineRegisterReturnMsg(Create_Username, Create_Password, Create_Email, Create_LineID);
+            string message = returnMsg.Message;
+
+            if (returnMsg.Status == true)
             {
-                DisplayAlert("註冊成功",
-                       "請使用新註冊的Email與Password到登入介面進行登入。",
+                await DisplayAlert("成功",
+                       message,
                        "OK");
             }
             else
             {
-                DisplayAlert("註冊失敗",
-                       "失敗原因...。\n如有疑慮請...",
+                await DisplayAlert("失敗",
+                       message,
                        "OK");
             }
 
@@ -102,7 +127,7 @@ namespace MasterDetailTemplate.Views
                 await DisplayAlert("已經登入",
                        "登入了! 可以開始進行其餘操作。",
                        "OK");
-
+                label_UserName.Text = LoginUser;
                 StackLayout_UserLoginFirst.IsVisible = false;
                 StackLayout_UserCanLogoutNow.IsVisible = true;
 
@@ -200,9 +225,44 @@ namespace MasterDetailTemplate.Views
 
             bool ResponseState = bool.Parse(ResponseJsonData["State"]);
 
+            LoginUser = ResponseJsonData["UserName"].ToString();
+
             return ResponseState;
         }
 
+        public async Task<ReturnMsg> GetMineRegisterReturnMsg(string userName, string password,
+                                                              string email, string lineID)
+        {
+            var wb = new WebClient();
+            var dataSendUse = new NameValueCollection();
+
+            string urlSendUse = "http://192.168.0.80:52809/MobileService/RegisterUser";
+
+            string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
+            wb.Headers.Add("Authorization", Bearer);
+
+            // dataSendUse["email"] = "gg.2009@gmail.com";
+            // dataSendUse["password"] = "5487XDXD";
+
+            dataSendUse["username"] = userName;
+            dataSendUse["password"] = password;
+            dataSendUse["email"] = email;
+            dataSendUse["lineID"] = lineID;
+
+            var response = await wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
+
+            string str = Encoding.UTF8.GetString(response);
+
+            Dictionary<string, string> ResponseJsonData = ToDictionary(str);
+
+            ReturnMsg returnMsg = new ReturnMsg();
+            returnMsg.Status = bool.Parse(ResponseJsonData["Status"]);
+            returnMsg.Message = ResponseJsonData["Message"].ToString();
+
+            int a = 3;
+
+            return returnMsg;
+        }
 
         /*
         public async Task<string> GetStatus(string email, string password)
