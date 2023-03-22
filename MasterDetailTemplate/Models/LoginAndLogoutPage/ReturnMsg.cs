@@ -8,5 +8,7 @@ namespace MasterDetailTemplate.Models.LoginAndLogoutPage
     {
         public bool Status { get; set; }
         public string Message { get; set; }
+        public string Auth001Id { get; set; }
+        public string UserName { get; set; }
     }
 }

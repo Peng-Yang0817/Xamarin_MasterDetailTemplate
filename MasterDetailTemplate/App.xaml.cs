@@ -10,6 +10,7 @@ namespace MasterDetailTemplate
     {
         public string LogStatus = "LogStatus";
         public string UserName = "UserName";
+        public string Auth001Id = "Auth001Id";
         public App()
         {
             InitializeComponent();
@@ -21,6 +22,10 @@ namespace MasterDetailTemplate
             if (!Properties.ContainsKey(UserName))
             {
                 Properties[UserName] = "NULL";
+            }
+            if (!Properties.ContainsKey(Auth001Id))
+            {
+                Properties[Auth001Id] = "NULL";
             }
 
             DependencyService.Register<MockDataStore>();

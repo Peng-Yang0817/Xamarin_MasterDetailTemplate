@@ -25,6 +25,7 @@ namespace MasterDetailTemplate.Views
         public string LogStatus = "LogStatus";
         public string UserName = "UserName";
         public string LoginUser = "";
+        public string Auth001Id = "Auth001Id";
 
         public LoginAndLogoutPage()
         {
@@ -38,6 +39,7 @@ namespace MasterDetailTemplate.Views
             {
                 StackLayout_UserLoginFirst.IsVisible = false;
                 StackLayout_UserCanLogoutNow.IsVisible = true;
+                label_UserName.Text = app.Properties[UserName].ToString();
             }
         }
 
@@ -55,6 +57,7 @@ namespace MasterDetailTemplate.Views
 
             app.Properties[LogStatus] = "false";
             app.Properties[UserName] = "NULL";
+            app.Properties[Auth001Id] = "NULL";
             app.SavePropertiesAsync();
             DisplayAlert("已經登出",
                        "登出了~~~~",
@@ -116,12 +119,14 @@ namespace MasterDetailTemplate.Views
 
             // var status = await GetLineStatus("你媽白~~~XDXD");
 
-            var status = await GetMineServerStatus(Entry_Email, Entry_Password);
+            var returnMsg = await GetMineServerResponse(Entry_Email, Entry_Password);
 
 
-            if (status == true) // 登入成功
+            if (returnMsg.Status == true) // 登入成功
             {
                 app.Properties[LogStatus] = "true";
+                app.Properties[UserName] = returnMsg.UserName;
+                app.Properties[Auth001Id] = returnMsg.Auth001Id;
                 await app.SavePropertiesAsync();
 
                 await DisplayAlert("已經登入",
@@ -201,7 +206,7 @@ namespace MasterDetailTemplate.Views
         /// <param name="email">接收前端的email Entry</param>
         /// <param name="password">接收前端的password Entry</param>
         /// <returns></returns>
-        public async Task<bool> GetMineServerStatus(string email, string password)
+        public async Task<ReturnMsg> GetMineServerResponse(string email, string password)
         {
             var wb = new WebClient();
             var dataSendUse = new NameValueCollection();
@@ -223,11 +228,16 @@ namespace MasterDetailTemplate.Views
 
             Dictionary<string, string> ResponseJsonData = ToDictionary(str);
 
-            bool ResponseState = bool.Parse(ResponseJsonData["State"]);
+            ReturnMsg returnMsg = new ReturnMsg();
+
+            returnMsg.Status = bool.Parse(ResponseJsonData["Status"]);
+            returnMsg.Message = ResponseJsonData["Message"];
+            returnMsg.Auth001Id = ResponseJsonData["Auth001Id"];
+            returnMsg.UserName = ResponseJsonData["UserName"];
 
             LoginUser = ResponseJsonData["UserName"].ToString();
 
-            return ResponseState;
+            return returnMsg;
         }
 
         public async Task<ReturnMsg> GetMineRegisterReturnMsg(string userName, string password,
@@ -259,6 +269,7 @@ namespace MasterDetailTemplate.Views
             returnMsg.Status = bool.Parse(ResponseJsonData["Status"]);
             returnMsg.Message = ResponseJsonData["Message"].ToString();
 
+            // TODO
             int a = 3;
 
             return returnMsg;
