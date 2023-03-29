@@ -29,6 +29,7 @@
                     <StackLayout x:Name="StackLayout_Miain">
 
                         <!-- TOD_區塊設計，之後要用C#的方式將其塞到ScrollView_Main當中 -->
+                        <!--
                         <StackLayout Margin="20,20">
                             <Label Text="編號 : AAAAAAAA22222222" FontSize="25" TextColor="Black"/>
                             <Label Text="水質類型 : 弱鹼"  FontSize="20" TextColor="Black"/>
@@ -99,7 +100,7 @@
                                 </Grid>
                             </StackLayout>
                         </StackLayout>
-
+                        -->
                     </StackLayout>
                 </ScrollView>
             </RefreshView>
