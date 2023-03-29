@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterDetailTemplate.Views.AquariumWaterSituationPage"
+             Title="魚缸水質狀況">
+    <!--
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Table_Title_Style" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#54585d"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Fill"/>
+                <Setter Property="Padding" Value="12,5"/>
+            </Style>
+            <Style x:Key="Table_Content_Style" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#d4d4d4"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Fill"/>
+                <Setter Property="Padding" Value="5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    -->
+    <ContentPage.Content>
+        <Grid>
+            <RefreshView x:Name="myRefreshView" RefreshColor="#2196f3"
+                         Refreshing="RefreshView_Refreshing">
+                <ScrollView >
+                    <StackLayout x:Name="StackLayout_Miain">
+
+                        <!-- TOD_區塊設計，之後要用C#的方式將其塞到ScrollView_Main當中 -->
+                        <StackLayout Margin="20,20">
+                            <Label Text="編號 : AAAAAAAA22222222" FontSize="25" TextColor="Black"/>
+                            <Label Text="水質類型 : 弱鹼"  FontSize="20" TextColor="Black"/>
+                            <StackLayout Margin="10,10">
+                                <Grid ColumnSpacing="2" RowSpacing="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0"
+                                             Grid.Column="0"
+                                             Style="{x:StaticResource Table_Title_Style}">
+                                        <Label Text="紀錄時間" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="0"
+                                         Grid.Column="1"
+                                         Style="{x:StaticResource Table_Content_Style}">
+                                        <Label Text="2022/10/5 上午 10:12:00" TextColor="Black" FontSize="18"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1"
+                                         Grid.Column="0"
+                                         Style="{x:StaticResource Table_Title_Style}">
+                                        <Label Text="水位高度" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1"
+                                         Grid.Column="1"
+                                         Style="{x:StaticResource Table_Content_Style}">
+                                        <Label Text="Low Level" TextColor="Black" FontSize="18"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2"
+                                         Grid.Column="0"
+                                         Style="{x:StaticResource Table_Title_Style}">
+                                        <Label Text="水中溫度" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2"
+                                         Grid.Column="1"
+                                         Style="{x:StaticResource Table_Content_Style}">
+                                        <Label Text="21.2°C" TextColor="Black" FontSize="18"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3"
+                                         Grid.Column="0"
+                                         Style="{x:StaticResource Table_Title_Style}">
+                                        <Label Text="水中濁度" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3"
+                                         Grid.Column="1"
+                                         Style="{x:StaticResource Table_Content_Style}">
+                                        <Label Text="992NTU" TextColor="Black" FontSize="18"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="4"
+                                         Grid.Column="0"
+                                         Style="{x:StaticResource Table_Title_Style}">
+                                        <Label Text="PH 值" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="4"
+                                         Grid.Column="1"
+                                         Style="{x:StaticResource Table_Content_Style}">
+                                        <Label Text="7.1mol/L" TextColor="Black" FontSize="18"/>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+            </RefreshView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

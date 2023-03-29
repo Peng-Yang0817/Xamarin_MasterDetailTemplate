@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+aMHPwUYjygWoecQpp3t64ZN7wNJEgu2oGBWrdfLCjN+a6HHs39XgEPvnJfiLSErZafFKJjVXyU/yT4SIVhPLQ==",
+  "dgSpecHash": "p8/QTRpQXovTpVUXOoDK2bAi1fE+0t22hyv14aGdlZIg8ldTDA7eJXsJFgZpcXQNAz4AIYkmVqITRf++mHib7w==",
   "success": true,
-  "projectFilePath": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj",
+  "projectFilePath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tcher\\.nuget\\packages\\behaviors.forms\\1.4.0\\behaviors.forms.1.4.0.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",

@@ -9,7 +9,8 @@ namespace MasterDetailTemplate.Models
         Browse,
         About,
         Test,
-        LoginAndLogout
+        LoginAndLogout,
+        AquariumWaterSituation
     }
     public class HomeMenuItem
     {

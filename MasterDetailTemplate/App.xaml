@@ -16,6 +16,18 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+            <Style x:Key="Table_Title_Style" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#54585d"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Fill"/>
+                <Setter Property="Padding" Value="12,5"/>
+            </Style>
+            <Style x:Key="Table_Content_Style" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#d4d4d4"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Fill"/>
+                <Setter Property="Padding" Value="5"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 

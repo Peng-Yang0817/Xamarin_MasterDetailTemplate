@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj": {}
+    "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj": {
+    "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj",
+        "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj",
         "projectName": "MasterDetailTemplate.UnitTest",
-        "projectPath": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj",
+        "projectPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj",
         "packagesPath": "C:\\Users\\tcher\\.nuget\\packages\\",
-        "outputPath": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\obj\\",
+        "outputPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
-                "projectPath": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj"
+              "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
+                "projectPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj"
               }
             }
           }
@@ -92,18 +92,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.309\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.310\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
+    "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
+        "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
         "projectName": "MasterDetailTemplate",
-        "projectPath": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
+        "projectPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
         "packagesPath": "C:\\Users\\tcher\\.nuget\\packages\\",
-        "outputPath": "C:\\Codding\\MyAwesomeApp2\\DpxTemplate\\xamarin-forms-templates\\MasterDetailTemplate\\MasterDetailTemplate\\obj\\",
+        "outputPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
