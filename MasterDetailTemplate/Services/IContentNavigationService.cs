@@ -36,6 +36,7 @@ namespace MasterDetailTemplate.Services
         /// </summary>
         public const string AboutPage = nameof(Views.AboutPage);
         public const string DetailPage = nameof(Views.DetailPage);
+        public const string ChartViewPage = nameof(Views.ChartViewPage);
 
         /// <summary>
         /// 頁面鍵- 頁面類型字典
@@ -43,7 +44,8 @@ namespace MasterDetailTemplate.Services
         public static readonly Dictionary<string, Type> PageKeyTypeDictionary =
             new Dictionary<string, Type> {
                 { AboutPage,typeof(AboutPage) },
-                { DetailPage,typeof(DetailPage) }}
-            ;
+                { DetailPage,typeof(DetailPage) },
+                { ChartViewPage,typeof(ChartViewPage) }
+            };
     }
 }

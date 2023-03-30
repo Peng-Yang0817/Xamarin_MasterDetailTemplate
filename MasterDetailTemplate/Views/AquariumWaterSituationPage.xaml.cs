@@ -13,6 +13,10 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Collections.Specialized;
 using System.Net;
+using MasterDetailTemplate.Views;
+
+using MasterDetailTemplate.Services;
+using MasterDetailTemplate.Models;
 
 namespace MasterDetailTemplate.Views
 {
@@ -24,6 +28,12 @@ namespace MasterDetailTemplate.Views
         public Dictionary<string, string> keyValuePairs_WaterLevel = new Dictionary<string, string>();
         public Dictionary<string, string> keyValuePairs_WaterType = new Dictionary<string, string>();
 
+
+        // 準備轉跳頁面所需的物件
+        private static ContentPageActivationService ContentPageActivationService =
+            new ContentPageActivationService();
+        private static ContentNavigationService ContentNavigationService =
+            new ContentNavigationService(ContentPageActivationService);
 
         public AquariumWaterSituationPage()
         {
@@ -39,16 +49,29 @@ namespace MasterDetailTemplate.Views
 
             List<AquaruimSituation> DataList = await GetMyAquaruimSituationsData();
 
-            foreach (var item in DataList)
+            Dictionary<string, bool> ButtonStaus = await GetAquariumDataStatus();
+            if (DataList.Count <= 0) 
             {
-                AddAquariumTemplate(item);
+                await DisplayAlert("提醒",
+                    "用戶尚未註冊任何魚缸",
+                    "OK");
             }
+
+            if (DataList.Count == ButtonStaus.Count)
+            {
+                foreach (var item in DataList)
+                {
+                    AddAquariumTemplate(item, ButtonStaus);
+                }
+            }
+
         }
 
         /// <summary>
         /// 定義水為高度對應中文
         /// </summary>
-        public void WaterLevelDefinit() {
+        public void WaterLevelDefinit()
+        {
             keyValuePairs_WaterLevel.Add("1", "Low Level");
             keyValuePairs_WaterLevel.Add("2", "Middle Level");
             keyValuePairs_WaterLevel.Add("3", "Heigh Level");
@@ -63,7 +86,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 頁面下滑刷新
         /// </summary>
-        async void RefreshView_Refreshing(object sender, EventArgs args) {
+        async void RefreshView_Refreshing(object sender, EventArgs args)
+        {
 
             StackLayout_Miain.Children.Clear();
             await Task.Delay(3000);
@@ -71,8 +95,23 @@ namespace MasterDetailTemplate.Views
             // 取當前使用者資料
             List<AquaruimSituation> DataList = await GetMyAquaruimSituationsData();
 
-            foreach (var item in DataList) {
-                AddAquariumTemplate(item);
+            // 按鈕能否點擊
+            Dictionary<string, bool> ButtonStaus = await GetAquariumDataStatus();
+
+            if (DataList.Count <= 0)
+            {
+                await DisplayAlert("提醒",
+                    "用戶尚未註冊任何魚缸",
+                    "OK");
+            }
+
+            // 按鈕能不能點的資訊，比對長度是否相同
+            if (DataList.Count == ButtonStaus.Count)
+            {
+                foreach (var item in DataList)
+                {
+                    AddAquariumTemplate(item, ButtonStaus);
+                }
             }
 
             myRefreshView.IsRefreshing = false;
@@ -81,7 +120,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 接收資料塞值到 StackLayout_Miain
         /// </summary>
-        public void AddAquariumTemplate(AquaruimSituation item) {
+        public void AddAquariumTemplate(AquaruimSituation item, Dictionary<string, bool> ButtonStaus)
+        {
             var grid_content = new Grid
             {
                 ColumnSpacing = 2,
@@ -190,6 +230,12 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetRow(stackLayout_waterTemperature_title, 2);
             Xamarin.Forms.Grid.SetColumn(stackLayout_waterTemperature_title, 0);
 
+            var Temperature = "尚未擁有資料";
+            if (item.temperature != "尚未擁有資料")
+            {
+                Temperature = item.temperature + " °C";
+            }
+
             var stackLayout_waterTemperature_value = new StackLayout
             {
                 Style = (Style)Application.Current.Resources["Table_Content_Style"],
@@ -197,7 +243,7 @@ namespace MasterDetailTemplate.Views
                 {
                     new Label
                     {
-                        Text = item.temperature +" °C",
+                        Text = Temperature,
                         TextColor = Color.Black,
                         FontSize = 18
                     }
@@ -225,6 +271,12 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetRow(stackLayout_waterTurbidity_title, 3);
             Xamarin.Forms.Grid.SetColumn(stackLayout_waterTurbidity_title, 0);
 
+            var Turbidity = "尚未擁有資料";
+            if (item.Turbidity != "尚未擁有資料")
+            {
+                Turbidity = item.Turbidity + " NTU";
+            }
+
             var stackLayout_waterTurbidity_value = new StackLayout
             {
                 Style = (Style)Application.Current.Resources["Table_Content_Style"],
@@ -232,7 +284,7 @@ namespace MasterDetailTemplate.Views
                 {
                     new Label
                     {
-                        Text = item.Turbidity + " NTU",
+                        Text = Turbidity,
                         TextColor = Color.Black,
                         FontSize = 18
                     }
@@ -260,6 +312,12 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetRow(stackLayout_waterTDS_title, 5);
             Xamarin.Forms.Grid.SetColumn(stackLayout_waterTDS_title, 0);
 
+            var TDS = "尚未擁有資料";
+            if (item.TDS != "尚未擁有資料")
+            {
+                TDS = item.TDS + " ppm";
+            }
+
             var stackLayout_waterTDS_value = new StackLayout
             {
                 Style = (Style)Application.Current.Resources["Table_Content_Style"],
@@ -268,17 +326,10 @@ namespace MasterDetailTemplate.Views
                 {
                     new Label
                     {
-                        Text = item.TDS,
+                        Text = TDS,
                         TextColor = Color.Black,
                         FontSize = 18,
                         HorizontalOptions = LayoutOptions.StartAndExpand
-                    },
-                    new Label{
-                        Text ="ppm",
-                        TextColor = Color.Black,
-                        FontSize = 18,
-                        BackgroundColor = Color.White,
-                        HorizontalOptions = LayoutOptions.End
                     }
                 }
             };
@@ -304,6 +355,12 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetRow(stackLayout_waterPH_title, 4);
             Xamarin.Forms.Grid.SetColumn(stackLayout_waterPH_title, 0);
 
+            var PH = "尚未擁有資料";
+            if (item.PH != "尚未擁有資料")
+            {
+                PH = item.PH + " mol/L";
+            }
+
             var stackLayout_waterPH_value = new StackLayout
             {
                 Style = (Style)Application.Current.Resources["Table_Content_Style"],
@@ -311,7 +368,7 @@ namespace MasterDetailTemplate.Views
                 {
                     new Label
                     {
-                        Text = item.PH+" mol/L",
+                        Text = PH,
                         TextColor = Color.Black,
                         FontSize = 18
                     }
@@ -321,7 +378,45 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetRow(stackLayout_waterPH_value, 4);
             Xamarin.Forms.Grid.SetColumn(stackLayout_waterPH_value, 1);
 
-            
+
+            // ============================================================================= 插入的新
+            bool AQStatus = ButtonStaus[item.AquariumUnitNum];
+            Button button = new Button();
+
+            if (AQStatus)
+            {
+                button = new Button
+                {
+                    Text = "查看圖表",
+                    IsEnabled = true,
+                    BackgroundColor = Color.FromHex("#94bed6"),
+                    TextColor = Color.White,
+                    FontSize = 15,
+                    Margin = new Thickness(10, 0, 10, 0),
+                    WidthRequest = 100,
+                    HeightRequest = 40,
+                    CornerRadius = 8,
+                    VerticalOptions = LayoutOptions.Center
+                };
+
+                button.Clicked += Button_ChartView_Clicked;
+            }
+            else
+            {
+                button = new Button
+                {
+                    Text = "資料量不足",
+                    BackgroundColor = Color.Red,
+                    TextColor = Color.White,
+                    FontSize = 15,
+                    Margin = new Thickness(10, 0, 10, 0),
+                    WidthRequest = 100,
+                    HeightRequest = 40,
+                    CornerRadius = 8,
+                    VerticalOptions = LayoutOptions.Center
+                };
+            }
+
 
             var mainStackLayout = new StackLayout
             {
@@ -334,12 +429,23 @@ namespace MasterDetailTemplate.Views
                         FontSize = 25,
                         TextColor = Color.Black
                     },
-                    new Label
+                    new StackLayout
                     {
-                        Text = keyValuePairs_WaterType[item.WaterType],
-                        FontSize = 20,
-                        TextColor = Color.Black
+                        Orientation = StackOrientation.Horizontal,
+                        Children=
+                        {
+                            new Label
+                            {
+                                Text = keyValuePairs_WaterType[item.WaterType],
+                                FontSize = 20,
+                                TextColor = Color.Black,
+                                HorizontalOptions = LayoutOptions.StartAndExpand,
+                                VerticalOptions = LayoutOptions.Center,
+                            },
+                            button
+                        }
                     },
+
                     new StackLayout
                     {
                         Margin = new Thickness(10, 10, 10, 10),
@@ -359,7 +465,7 @@ namespace MasterDetailTemplate.Views
         /// 向Server取得使用者魚缸資訊
         /// </summary>
         /// <returns></returns>
-        public async Task<List<AquaruimSituation>> GetMyAquaruimSituationsData() 
+        public async Task<List<AquaruimSituation>> GetMyAquaruimSituationsData()
         {
             // 獲得Properties當中目前的使用者Auth001Id
             string _Auth001Id = app.Properties[Auth001Id].ToString();
@@ -384,6 +490,47 @@ namespace MasterDetailTemplate.Views
 
             return DataList;
         }
-    
+
+
+        /// <summary>
+        /// 向Server取得使用者魚缸是否可以點 "查看圖表"
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Dictionary<string, bool>> GetAquariumDataStatus()
+        {
+            // 獲得Properties當中目前的使用者Auth001Id
+            string _Auth001Id = app.Properties[Auth001Id].ToString();
+            Dictionary<string, bool> DataList = new Dictionary<string, bool>();
+
+            var wb = new WebClient();
+            var dataSendUse = new NameValueCollection();
+
+            string urlSendUse = "http://192.168.0.80:52809/MobileService/GetAquariumDataStatus";
+
+            string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
+            wb.Headers.Add("Authorization", Bearer);
+
+            dataSendUse["Auth001Id"] = _Auth001Id;
+
+            var responseSendUse = await wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
+
+            string str = Encoding.UTF8.GetString(responseSendUse);
+
+            // 解析JSON string
+            DataList = JsonConvert.DeserializeObject<Dictionary<string, bool>>(str);
+
+            return DataList;
+        }
+
+
+        /// <summary>
+        /// 轉跳至新頁面，顯示圖表，目前先用測試頁代替
+        /// </summary>
+        public async void Button_ChartView_Clicked(object sender, EventArgs e)
+        {
+            await ContentNavigationService.NavigateToAsync(ContentNavigationConstants.ChartViewPage);
+        }
+
+
     }
 }
