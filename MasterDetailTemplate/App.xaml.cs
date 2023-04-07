@@ -11,10 +11,23 @@ namespace MasterDetailTemplate
         public string LogStatus = "LogStatus";
         public string UserName = "UserName";
         public string Auth001Id = "Auth001Id";
+        public string AquariumUnitNum = "AquariumUnitNum";
         public App()
         {
             InitializeComponent();
 
+            PropertiesInit();
+
+            DependencyService.Register<MockDataStore>();
+            MainPage = new MainPage();
+            //MainPage = new NavigationPage(new ItemsPage());
+        }
+
+        /// <summary>
+        ///初始化系統需要的Properties，將其存到app當中
+        /// </summary>
+        public void PropertiesInit() 
+        {
             if (!Properties.ContainsKey(LogStatus))
             {
                 Properties[LogStatus] = "false";
@@ -27,10 +40,10 @@ namespace MasterDetailTemplate
             {
                 Properties[Auth001Id] = "NULL";
             }
-
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
-            //MainPage = new NavigationPage(new ItemsPage());
+            if (!Properties.ContainsKey(AquariumUnitNum))
+            {
+                Properties[AquariumUnitNum] = "NULL";
+            }
         }
 
         protected override void OnStart()

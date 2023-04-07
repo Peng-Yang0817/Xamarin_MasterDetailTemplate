@@ -25,6 +25,7 @@ namespace MasterDetailTemplate.Views
     {
         public App app = Application.Current as App;
         public string Auth001Id = "Auth001Id";
+        public string AquariumUnitNum = "AquariumUnitNum";
         public Dictionary<string, string> keyValuePairs_WaterLevel = new Dictionary<string, string>();
         public Dictionary<string, string> keyValuePairs_WaterType = new Dictionary<string, string>();
 
@@ -383,11 +384,15 @@ namespace MasterDetailTemplate.Views
             bool AQStatus = ButtonStaus[item.AquariumUnitNum];
             Button button = new Button();
 
+            // 判斷該魚缸資料量足不足夠，足夠才給予圖表顯示按鈕
             if (AQStatus)
             {
+
                 button = new Button
                 {
                     Text = "查看圖表",
+                    // 將魚缸編號存在按鈕的ClassId當中，以便觸發時可以讀取
+                    ClassId = item.AquariumUnitNum,
                     IsEnabled = true,
                     BackgroundColor = Color.FromHex("#94bed6"),
                     TextColor = Color.White,
@@ -528,6 +533,14 @@ namespace MasterDetailTemplate.Views
         /// </summary>
         public async void Button_ChartView_Clicked(object sender, EventArgs e)
         {
+            var button = sender as Button;
+            // 取的按鈕的代表的魚缸編號
+            var aquariumUnitNum = button.ClassId;
+
+            // 將魚缸編號存入Properties，方便跳轉業面後能調用
+            app.Properties[AquariumUnitNum] = aquariumUnitNum;
+            await app.SavePropertiesAsync();
+
             await ContentNavigationService.NavigateToAsync(ContentNavigationConstants.ChartViewPage);
         }
 

@@ -140,6 +140,10 @@
               "target": "Package",
               "version": "[1.4.0, )"
             },
+            "Microcharts.Forms": {
+              "target": "Package",
+              "version": "[0.6.1, )"
+            },
             "MvvmLightLibs": {
               "target": "Package",
               "version": "[5.4.1.1, )"
