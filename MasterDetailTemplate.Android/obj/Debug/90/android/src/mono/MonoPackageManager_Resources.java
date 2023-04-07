@@ -10,6 +10,8 @@ public class MonoPackageManager_Resources {
 		"GalaSoft.MvvmLight.Extras.dll",
 		"GalaSoft.MvvmLight.Platform.dll",
 		"MasterDetailTemplate.dll",
+		"Microcharts.dll",
+		"Microcharts.Droid.dll",
 		"Microcharts.Forms.dll",
 		"Newtonsoft.Json.dll",
 		"SkiaSharp.dll",

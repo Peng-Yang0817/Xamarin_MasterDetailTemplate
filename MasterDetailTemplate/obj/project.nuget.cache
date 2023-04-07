@@ -1,18 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "E8/+FpShHTDFEJFZclb+0QtgFmIlZpqUo21D08brIizno+9mtazkA570KpiIV8VqKXVPQnOUOqnB8g3YLygo7w==",
+  "dgSpecHash": "AYaToVCjOVFP1KBIWg1Uux+U1wICYicSAbviwy6Saq5MnPoPPSNGyEyFjfPB77aeNEimefcLfUV+HQzW9BYa9w==",
   "success": true,
   "projectFilePath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tcher\\.nuget\\packages\\behaviors.forms\\1.4.0\\behaviors.forms.1.4.0.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",
-    "C:\\Users\\tcher\\.nuget\\packages\\microcharts.forms\\0.6.1\\microcharts.forms.0.6.1.nupkg.sha512",
+    "C:\\Users\\tcher\\.nuget\\packages\\microcharts\\0.9.5.9\\microcharts.0.9.5.9.nupkg.sha512",
+    "C:\\Users\\tcher\\.nuget\\packages\\microcharts.forms\\0.9.5.9\\microcharts.forms.0.9.5.9.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
-    "C:\\Users\\tcher\\.nuget\\packages\\skiasharp\\1.59.1\\skiasharp.1.59.1.nupkg.sha512",
-    "C:\\Users\\tcher\\.nuget\\packages\\skiasharp.views.forms\\1.59.1\\skiasharp.views.forms.1.59.1.nupkg.sha512",
+    "C:\\Users\\tcher\\.nuget\\packages\\skiasharp\\2.80.2\\skiasharp.2.80.2.nupkg.sha512",
+    "C:\\Users\\tcher\\.nuget\\packages\\skiasharp.views.forms\\2.80.2\\skiasharp.views.forms.2.80.2.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.4\\sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
@@ -22,21 +23,12 @@
     "C:\\Users\\tcher\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\tcher\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
-    "C:\\Users\\tcher\\.nuget\\packages\\xamarin.forms\\4.5.0.495\\xamarin.forms.4.5.0.495.nupkg.sha512",
+    "C:\\Users\\tcher\\.nuget\\packages\\xamarin.forms\\4.7.0.1351\\xamarin.forms.4.7.0.1351.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\xamarin.forms.extended.infinitescrolling\\1.0.0-preview2\\xamarin.forms.extended.infinitescrolling.1.0.0-preview2.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "已使用 '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' 而非專案目標架構 '.NETStandard,Version=v2.0' 還原了套件 'Microcharts.Forms 0.6.1'。此套件與您的專案並非完全相容。",
-      "libraryId": "Microcharts.Forms",
-      "targetGraphs": [
-        ".NETStandard,Version=v2.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",
