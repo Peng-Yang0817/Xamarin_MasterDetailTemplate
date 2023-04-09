@@ -10,6 +10,9 @@ using Xamarin.Forms.Xaml;
 using SkiaSharp;
 using Microcharts;
 using Microcharts.Forms;
+using System.Net;
+using System.Collections.Specialized;
+using Newtonsoft.Json;
 
 namespace MasterDetailTemplate.Views
 {
@@ -39,24 +42,49 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 覆寫重新進到該頁面後的刷新。
         /// </summary>
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
+            SetAquaruimNum();
+
+            // 取得圖表所需資料
+            List<AquariumSituationMotify> DataList = await GetMyChartNeedData();
+
+            // 定義時間與各基準的集合
+            List<string> DateTiemString = new List<string>();
+            List<string> DataString_temperature = new List<string>();
+            List<string> DataString_Turbidity = new List<string>();
+            List<string> DataString_PH = new List<string>();
+            List<string> DataString_TDS = new List<string>();
+            List<string> DataString_WaterLevel = new List<string>();
+
+            // 放資料到對應集合
+            foreach (var item in DataList)
+            {
+                DateTiemString.Add(item.createTime);
+
+                DataString_temperature.Add(item.temperature);
+                DataString_Turbidity.Add(item.Turbidity);
+                DataString_PH.Add(item.PH);
+                DataString_TDS.Add(item.TDS);
+                DataString_WaterLevel.Add(item.WaterLevelNum);
+            }
+            // ============================================== 溫度
             // 設定溫度圖表
-            SetTemperatureChart();
-
+            SetTemperatureChart(DateTiemString, DataString_temperature);
+            // ============================================== 濁度
             // 設定濁度圖表
-            SetTurbidityChart();
-
+            SetTurbidityChart(DateTiemString, DataString_Turbidity);
+            // ============================================== PH
             // 設定PH圖表
-            SetPHChart();
-
+            SetPHChart(DateTiemString, DataString_PH);
+            // ============================================== TDS
             // 設定TDS圖表
-            SetTDSChart();
-
+            SetTDSChart(DateTiemString, DataString_TDS);
+            // ============================================== 水位高度
             // 設定水位高度圖表
-            SetWaterLevelChart();
+            SetWaterLevelChart(DateTiemString, DataString_WaterLevel);
         }
 
         // ========================================================================== 塞資料區塊
@@ -65,12 +93,12 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定溫度圖表
         /// </summary>
-        public void SetTemperatureChart()
+        /// <param name="DateTimeString">時間label(6個)</param>
+        /// <param name="DataString">溫度集合(6個)</param>
+        public void SetTemperatureChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空溫度的曲線圖的StackLayout
             StackLatout_Temperature.Children.Clear();
-
-            SetAquaruimNum();
 
             // 建立 ChartView
             ChartView chartView = GetChartViewTemp();
@@ -78,51 +106,21 @@ namespace MasterDetailTemplate.Views
             string unit = " °C";
 
             // 測試用的溫度狀態List<ChartEntry>
-            List<ChartEntry> entries_Temperature = new List<ChartEntry>
+
+            List<ChartEntry> entries_Temperature = new List<ChartEntry>();
+
+            for (int i = 0; i < 6; i++)
             {
-                new ChartEntry(23)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/04",
-                    ValueLabel = "23"+ unit
-                },
-                new ChartEntry(25)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/05",
-                    ValueLabel = "25"+ unit
-                },
-                new ChartEntry(18)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/06",
-                    ValueLabel = "18"+ unit
-                },
-                new ChartEntry(20)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/07",
-                    ValueLabel = "20"+ unit
-                },
-                new ChartEntry(22)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/08",
-                    ValueLabel = "22"+ unit
-                },
-                new ChartEntry(18)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/09",
-                    ValueLabel = "18"+ unit
-                }
-            };
+                entries_Temperature.Add(
+                    new ChartEntry(float.Parse(DataString[i]))
+                    {
+                        Color = SKColor.Parse("#ffffff"),
+                        ValueLabelColor = SKColor.Parse("#ffffff"),
+                        Label = DateTimeString[i],
+                        ValueLabel = DataString[i] + unit
+                    }
+                );
+            }
 
             // 建立 LineChart
             var chart = GetLineChartTemp();
@@ -139,12 +137,12 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定濁度圖表
         /// </summary>
-        public void SetTurbidityChart()
+        /// <param name="DateTimeString">時間label(6個)</param>
+        /// <param name="DataString">濁度集合(6個)</param>
+        public void SetTurbidityChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
             StackLatout_Turbidity.Children.Clear();
-
-            SetAquaruimNum();
 
             // 建立 ChartView
             ChartView chartView = GetChartViewTemp();
@@ -152,51 +150,20 @@ namespace MasterDetailTemplate.Views
             string unit = " NTU";
 
             // 測試用的濁度狀態List<ChartEntry>
-            List<ChartEntry> entries_Turbidity = new List<ChartEntry>
+            List<ChartEntry> entries_Turbidity = new List<ChartEntry>();
+            for (int i = 0; i < 6; i++)
             {
-                new ChartEntry(1700)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/04",
-                    ValueLabel = "1700"+ unit
-                },
-                new ChartEntry(1749)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/05",
-                    ValueLabel = "1749"+ unit
-                },
-                new ChartEntry(1800)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/06",
-                    ValueLabel = "1800"+ unit
-                },
-                new ChartEntry(1760)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/07",
-                    ValueLabel = "1760"+ unit
-                },
-                new ChartEntry(1922)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/08",
-                    ValueLabel = "1922"+ unit
-                },
-                new ChartEntry(1987)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/09",
-                    ValueLabel = "1987"+ unit
-                }
-            };
+                entries_Turbidity.Add(
+                    new ChartEntry(float.Parse(DataString[i]))
+                    {
+                        Color = SKColor.Parse("#ffffff"),
+                        ValueLabelColor = SKColor.Parse("#ffffff"),
+                        Label = DateTimeString[i],
+                        ValueLabel = DataString[i] + unit
+                    }
+                );
+            }
+
 
             // 建立 LineChart
             var chart = GetLineChartTemp();
@@ -213,12 +180,12 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定PH圖表
         /// </summary>
-        public void SetPHChart()
+        /// <param name="DateTimeString">時間label(6個)</param>
+        /// <param name="DataString">PH集合(6個)</param>
+        public void SetPHChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
             StackLatout_PH.Children.Clear();
-
-            SetAquaruimNum();
 
             // 建立 ChartView
             ChartView chartView = GetChartViewTemp();
@@ -226,51 +193,20 @@ namespace MasterDetailTemplate.Views
             string unit = " mol/L";
 
             // 測試用的PH狀態List<ChartEntry>
-            List<ChartEntry> entries_PH = new List<ChartEntry>
+            List<ChartEntry> entries_PH = new List<ChartEntry>();
+
+            for (int i = 0; i < 6; i++)
             {
-                new ChartEntry(6.3f)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/04",
-                    ValueLabel = "6.3"+ unit
-                },
-                new ChartEntry(7.2f)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/05",
-                    ValueLabel = "7.2"+ unit
-                },
-                new ChartEntry(7.2f)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/06",
-                    ValueLabel = "7.2"+ unit
-                },
-                new ChartEntry(2f)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/07",
-                    ValueLabel = "2.0"+ unit
-                },
-                new ChartEntry(6.3f)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/08",
-                    ValueLabel = "6.3"+ unit
-                },
-                new ChartEntry(9.5f)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/09",
-                    ValueLabel = "9.5"+ unit
-                },
-            };
+                entries_PH.Add(
+                    new ChartEntry(float.Parse(DataString[i]))
+                    {
+                        Color = SKColor.Parse("#ffffff"),
+                        ValueLabelColor = SKColor.Parse("#ffffff"),
+                        Label = DateTimeString[i],
+                        ValueLabel = DataString[i] + unit
+                    }
+                );
+            }
 
             // 建立 LineChart
             var chart = GetLineChartTemp();
@@ -279,6 +215,8 @@ namespace MasterDetailTemplate.Views
 
             // 在 ChartView 當中放入 LineChart
             chartView.Chart = chart;
+            chart.MaxValue = 14;
+            chart.MinValue = 0;
 
             // 將 ChartView 放入 StackLatout_Temperature
             StackLatout_PH.Children.Add(chartView);
@@ -287,12 +225,12 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定TDS圖表
         /// </summary>
-        public void SetTDSChart()
+        /// <param name="DateTimeString">時間label(6個)</param>
+        /// <param name="DataString">TDS集合(6個)</param>
+        public void SetTDSChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
             StackLatout_TDS.Children.Clear();
-
-            SetAquaruimNum();
 
             // 建立 ChartView
             ChartView chartView = GetChartViewTemp();
@@ -300,52 +238,20 @@ namespace MasterDetailTemplate.Views
             string unit = " ppm";
 
             // 測試用的PH狀態List<ChartEntry>
-            List<ChartEntry> entries_TDS = new List<ChartEntry>
+            List<ChartEntry> entries_TDS = new List<ChartEntry>();
+            for (int i = 0; i < 6; i++)
             {
-                new ChartEntry(3350)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/04",
-                    ValueLabel = "3350"+ unit
-                },
-                new ChartEntry(3050)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/05",
-                    ValueLabel = "3050"+ unit
-                },
-                new ChartEntry(1350)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/06",
-                    ValueLabel = "1350"+ unit
-                },
-                new ChartEntry(1350)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/07",
-                    ValueLabel = "1350"+ unit
-                },
-                new ChartEntry(9000)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/08",
-                    ValueLabel = "9000"+ unit
-                },
-                new ChartEntry(1350)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/09",
-                    ValueLabel = "1350"+ unit
-                },
+                entries_TDS.Add(
+                    new ChartEntry(float.Parse(DataString[i]))
+                    {
+                        Color = SKColor.Parse("#ffffff"),
+                        ValueLabelColor = SKColor.Parse("#ffffff"),
+                        Label = DateTimeString[i],
+                        ValueLabel = DataString[i] + unit
+                    }
+                );
+            }
 
-            };
 
             // 建立 LineChart
             var chart = GetLineChartTemp();
@@ -360,14 +266,14 @@ namespace MasterDetailTemplate.Views
         }
 
         /// <summary>
-        /// 設定TDS圖表
+        /// 設定水位高度圖表
         /// </summary>
-        public void SetWaterLevelChart()
+        /// <param name="DateTimeString">時間label(6個)</param>
+        /// <param name="DataString">水位高度集合(6個)</param>
+        public void SetWaterLevelChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
             StackLatout_WaterLevel.Children.Clear();
-
-            SetAquaruimNum();
 
             // 建立 ChartView
             ChartView chartView = GetChartViewTemp();
@@ -375,63 +281,77 @@ namespace MasterDetailTemplate.Views
             string unit = "";
 
             // 測試用的PH狀態List<ChartEntry>
-            List<ChartEntry> entries_WaterLevel = new List<ChartEntry>
+            List<ChartEntry> entries_WaterLevel = new List<ChartEntry>();
+            for (int i = 0; i < 6; i++)
             {
-                new ChartEntry(3)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/04",
-                    ValueLabel = keyValuePairs_WaterLevel["3"]+ unit
-                },
-                new ChartEntry(3)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/05",
-                    ValueLabel = keyValuePairs_WaterLevel["3"]+ unit
-                },
-                new ChartEntry(2)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/06",
-                    ValueLabel = keyValuePairs_WaterLevel["2"]+ unit
-                },
-                new ChartEntry(2)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/07",
-                    ValueLabel = keyValuePairs_WaterLevel["2"]+ unit
-                },
-                new ChartEntry(2)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/08",
-                    ValueLabel = keyValuePairs_WaterLevel["2"]+ unit
-                },
-                new ChartEntry(1)
-                {
-                    Color = SKColor.Parse("#ffffff"),
-                    ValueLabelColor =SKColor.Parse("#ffffff"),
-                    Label = "2022/03/09",
-                    ValueLabel = keyValuePairs_WaterLevel["1"]+ unit
-                },
+                entries_WaterLevel.Add(
+                    new ChartEntry(float.Parse(DataString[i]))
+                    {
+                        Color = SKColor.Parse("#ffffff"),
+                        ValueLabelColor = SKColor.Parse("#ffffff"),
+                        Label = DateTimeString[i],
+                        ValueLabel = keyValuePairs_WaterLevel[DataString[i]] + unit
+                    }
+                );
+            }
 
-            };
 
             // 建立 LineChart
             var chart = GetLineChartTemp();
             // LineChart 放入資料
             chart.Entries = entries_WaterLevel;
+            chart.MaxValue = 3;
+            chart.MinValue = 1;
 
             // 在 ChartView 當中放入 LineChart
             chartView.Chart = chart;
 
             // 將 ChartView 放入 StackLatout_Temperature
             StackLatout_WaterLevel.Children.Add(chartView);
+        }
+
+        // ========================================================================== 取得伺服器回傳水質曲線圖資料集合
+
+        /// <summary>
+        /// 取得伺服器回傳水質曲線圖資料集合
+        /// </summary>
+        public async Task<List<AquariumSituationMotify>> GetMyChartNeedData()
+        {
+            // 準備裝曲線圖的資料集合
+            List<AquariumSituationMotify> DataList = new List<AquariumSituationMotify>();
+
+            using (var wb = new WebClient())
+            {
+                var dataSendUse = new NameValueCollection();
+
+                string urlSendUse = "http://192.168.0.80:52809/MobileService/GetAquariumDatasForAquaruimId";
+
+                string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
+                wb.Headers.Add("Authorization", Bearer);
+
+                // 準備魚缸編號，用於查詢
+                dataSendUse["AquariumNum"] = getAquariumNum;
+
+                // 設定 Timeout 為 2.5 秒
+                wb.UploadValuesAsync(new Uri(urlSendUse), "POST", dataSendUse);
+                await Task.Delay(2500);
+                if (wb.IsBusy)
+                {
+                    wb.CancelAsync();
+                    await DisplayAlert("警告", "無法連線至伺服器，請稍後再試。", "確定");
+                    return null;
+                }
+
+                var responseSendUse = await wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
+
+                string str = Encoding.UTF8.GetString(responseSendUse);
+
+                // 解析JSON string
+                DataList = JsonConvert.DeserializeObject<List<AquariumSituationMotify>>(str);
+
+                return DataList;
+
+            }
         }
 
 
@@ -445,7 +365,7 @@ namespace MasterDetailTemplate.Views
             return new ChartView
             {
                 HeightRequest = 250,
-                WidthRequest = 600,
+                WidthRequest = 800,
                 HorizontalOptions = LayoutOptions.StartAndExpand
             };
         }
@@ -471,6 +391,76 @@ namespace MasterDetailTemplate.Views
             };
         }
 
+        // 預設的圖表集合格式
+        //[
+        //    {
+        //        "Id": 15,
+        //        "AquariumId": 1008,
+        //        "temperature": "23.1",
+        //        "Turbidity": "985",
+        //        "PH": "6.60",
+        //        "TDS": "1007",
+        //        "WaterLevel": "Middle Level",
+        //        "createTime": "22/10/24-19:00",
+        //        "WaterLevelNum": "2"
+        //    },
+        //    {
+        //        "Id": 16,
+        //        "AquariumId": 1008,
+        //        "temperature": "20.2",
+        //        "Turbidity": "1100",
+        //        "PH": "6.65",
+        //        "TDS": "1200",
+        //        "WaterLevel": "Middle Level",
+        //        "createTime": "22/10/24-20:00",
+        //        "WaterLevelNum": "2"
+        //    },
+        //    {
+        //    "Id": 17,
+        //        "AquariumId": 1008,
+        //        "temperature": "20.1",
+        //        "Turbidity": "1112",
+        //        "PH": "6.62",
+        //        "TDS": "1220",
+        //        "WaterLevel": "Middle Level",
+        //        "createTime": "22/10/24-21:00",
+        //        "WaterLevelNum": "2"
+        //    },
+        //    {
+        //    "Id": 18,
+        //        "AquariumId": 1008,
+        //        "temperature": "20.2",
+        //        "Turbidity": "1122",
+        //        "PH": "6.62",
+        //        "TDS": "1222",
+        //        "WaterLevel": "Middle Level",
+        //        "createTime": "22/10/24-22:00",
+        //        "WaterLevelNum": "2"
+        //    },
+        //    {
+        //    "Id": 19,
+        //        "AquariumId": 1008,
+        //        "temperature": "20.0",
+        //        "Turbidity": "1135",
+        //        "PH": "6.66",
+        //        "TDS": "1222",
+        //        "WaterLevel": "Middle Level",
+        //        "createTime": "22/10/24-23:00",
+        //        "WaterLevelNum": "2"
+        //    },
+        //    {
+        //    "Id": 20,
+        //        "AquariumId": 1008,
+        //        "temperature": "20.2",
+        //        "Turbidity": "1130",
+        //        "PH": "6.67",
+        //        "TDS": "1225",
+        //        "WaterLevel": "Middle Level",
+        //        "createTime": "22/10/25-01:00",
+        //        "WaterLevelNum": "2"
+        //    }
+        //]
+
         /// <summary>
         /// 設定魚缸標題編號LABLE
         /// </summary>
@@ -493,5 +483,18 @@ namespace MasterDetailTemplate.Views
             // 獲得Properties當中目前的使用者Auth001Id
             app.Properties[Auth001Id].ToString();
 
+    }
+    // 自定義魚缸水質狀況類別
+    public class AquariumSituationMotify
+    {
+        public int Id { get; set; }
+        public int AquariumId { get; set; }
+        public string temperature { get; set; }
+        public string Turbidity { get; set; }
+        public string PH { get; set; }
+        public string TDS { get; set; }
+        public string WaterLevel { get; set; }
+        public string createTime { get; set; }
+        public string WaterLevelNum { get; set; }
     }
 }
