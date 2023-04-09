@@ -45,7 +45,7 @@ namespace MasterDetailTemplate.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
+            Appearing_RefreshView.IsRefreshing = true;
 
             StackLayout_Miain.Children.Clear();
 
@@ -72,7 +72,7 @@ namespace MasterDetailTemplate.Views
                     }
                 }
             }
-
+            Appearing_RefreshView.IsRefreshing = false;
         }
 
         /// <summary>
@@ -96,9 +96,8 @@ namespace MasterDetailTemplate.Views
         /// </summary>
         async void RefreshView_Refreshing(object sender, EventArgs args)
         {
-
+            Appearing_RefreshView.IsRefreshing = true;
             StackLayout_Miain.Children.Clear();
-            await Task.Delay(500);
 
             // 取當前使用者資料
             List<AquaruimSituation> DataList = await GetMyAquaruimSituationsData();
@@ -125,7 +124,7 @@ namespace MasterDetailTemplate.Views
                     }
                 }
             }
-
+            Appearing_RefreshView.IsRefreshing = false;
             myRefreshView.IsRefreshing = false;
         }
 
@@ -499,9 +498,9 @@ namespace MasterDetailTemplate.Views
 
                 dataSendUse["Auth001Id"] = _Auth001Id;
 
-                // 設定 Timeout 為 3 秒
+                // 設定 Timeout 為 2.5 秒
                 wb.UploadValuesAsync(new Uri(urlSendUse), "POST", dataSendUse);
-                await Task.Delay(3000);
+                await Task.Delay(2500);
                 if (wb.IsBusy)
                 {
                     wb.CancelAsync();

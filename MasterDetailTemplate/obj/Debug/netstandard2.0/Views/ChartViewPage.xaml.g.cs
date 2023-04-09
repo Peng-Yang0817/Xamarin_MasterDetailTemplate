@@ -35,6 +35,9 @@ namespace MasterDetailTemplate.Views {
         private global::Xamarin.Forms.StackLayout StackLatout_TDS;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.StackLayout StackLatout_WaterLevel;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ChartViewPage));
             StackLayout_Miain = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "StackLayout_Miain");
@@ -43,6 +46,7 @@ namespace MasterDetailTemplate.Views {
             StackLatout_Turbidity = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "StackLatout_Turbidity");
             StackLatout_PH = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "StackLatout_PH");
             StackLatout_TDS = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "StackLatout_TDS");
+            StackLatout_WaterLevel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "StackLatout_WaterLevel");
         }
     }
 }

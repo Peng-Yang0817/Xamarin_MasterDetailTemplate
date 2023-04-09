@@ -21,6 +21,13 @@ namespace MasterDetailTemplate.Views
         public string AquariumUnitNum = "AquariumUnitNum";
         public string Auth001Id = "Auth001Id";
 
+        public Dictionary<string, string> keyValuePairs_WaterLevel = new Dictionary<string, string>
+        {
+            {"1", "Low Level"},
+            {"2", "Middle Level"},
+            {"3", "Heigh Level"}
+        };
+
         public ChartViewPage()
         {
             InitializeComponent();
@@ -47,6 +54,9 @@ namespace MasterDetailTemplate.Views
 
             // 設定TDS圖表
             SetTDSChart();
+
+            // 設定水位高度圖表
+            SetWaterLevelChart();
         }
 
         // ========================================================================== 塞資料區塊
@@ -349,7 +359,80 @@ namespace MasterDetailTemplate.Views
             StackLatout_TDS.Children.Add(chartView);
         }
 
+        /// <summary>
+        /// 設定TDS圖表
+        /// </summary>
+        public void SetWaterLevelChart()
+        {
+            // 清空濁度的曲線圖的StackLayout
+            StackLatout_WaterLevel.Children.Clear();
 
+            SetAquaruimNum();
+
+            // 建立 ChartView
+            ChartView chartView = GetChartViewTemp();
+
+            string unit = "";
+
+            // 測試用的PH狀態List<ChartEntry>
+            List<ChartEntry> entries_WaterLevel = new List<ChartEntry>
+            {
+                new ChartEntry(3)
+                {
+                    Color = SKColor.Parse("#ffffff"),
+                    ValueLabelColor =SKColor.Parse("#ffffff"),
+                    Label = "2022/03/04",
+                    ValueLabel = keyValuePairs_WaterLevel["3"]+ unit
+                },
+                new ChartEntry(3)
+                {
+                    Color = SKColor.Parse("#ffffff"),
+                    ValueLabelColor =SKColor.Parse("#ffffff"),
+                    Label = "2022/03/05",
+                    ValueLabel = keyValuePairs_WaterLevel["3"]+ unit
+                },
+                new ChartEntry(2)
+                {
+                    Color = SKColor.Parse("#ffffff"),
+                    ValueLabelColor =SKColor.Parse("#ffffff"),
+                    Label = "2022/03/06",
+                    ValueLabel = keyValuePairs_WaterLevel["2"]+ unit
+                },
+                new ChartEntry(2)
+                {
+                    Color = SKColor.Parse("#ffffff"),
+                    ValueLabelColor =SKColor.Parse("#ffffff"),
+                    Label = "2022/03/07",
+                    ValueLabel = keyValuePairs_WaterLevel["2"]+ unit
+                },
+                new ChartEntry(2)
+                {
+                    Color = SKColor.Parse("#ffffff"),
+                    ValueLabelColor =SKColor.Parse("#ffffff"),
+                    Label = "2022/03/08",
+                    ValueLabel = keyValuePairs_WaterLevel["2"]+ unit
+                },
+                new ChartEntry(1)
+                {
+                    Color = SKColor.Parse("#ffffff"),
+                    ValueLabelColor =SKColor.Parse("#ffffff"),
+                    Label = "2022/03/09",
+                    ValueLabel = keyValuePairs_WaterLevel["1"]+ unit
+                },
+
+            };
+
+            // 建立 LineChart
+            var chart = GetLineChartTemp();
+            // LineChart 放入資料
+            chart.Entries = entries_WaterLevel;
+
+            // 在 ChartView 當中放入 LineChart
+            chartView.Chart = chart;
+
+            // 將 ChartView 放入 StackLatout_Temperature
+            StackLatout_WaterLevel.Children.Add(chartView);
+        }
 
 
         // ========================================================================== 定義模板區塊

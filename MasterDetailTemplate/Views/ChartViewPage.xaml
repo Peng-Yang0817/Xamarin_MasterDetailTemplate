@@ -107,8 +107,24 @@
                                         </StackLayout>
                                     </ScrollView>
                                 </StackLayout>
-                            
-                            
+
+                                <!--水位高度區塊-->
+                                <StackLayout Grid.Row="8"
+                                             Grid.Column="0"
+                                             Style="{x:StaticResource Table_Title_Style}">
+                                    <Label Text="水位高度" TextColor="Wheat" FontSize="20"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="9"
+                                             Grid.Column="0"
+                                             Style="{x:StaticResource Table_Content_Style}"
+                                             Padding="0,0,0,0"
+                                             BackgroundColor="#4cadec">
+                                    <ScrollView Orientation="Horizontal">
+                                        <StackLayout x:Name="StackLatout_WaterLevel"
+                                                     Padding="0,5,0,5">
+                                        </StackLayout>
+                                    </ScrollView>
+                                </StackLayout>
                             </Grid>
                         </StackLayout>
                     </StackLayout>
