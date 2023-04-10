@@ -6,131 +6,131 @@
              Title="水質圖表檢視">
     <ContentPage.Content>
         <Grid>
+            <RefreshView x:Name="Appearing_RefreshView" RefreshColor="#2196f3" IsEnabled="False">
+                <ScrollView >
+                    <StackLayout x:Name="StackLayout_Miain">
 
-            <ScrollView >
-                <StackLayout x:Name="StackLayout_Miain">
+                        <!-- TOD_區塊設計，之後要用C#的方式將其塞到ScrollView_Main當中 -->
+                        <StackLayout Margin="5,5">
+                            <Label x:Name="AquaruimNum" FontSize="25" TextColor="Black"/>
+                            <StackLayout Margin="10,5">
+                                <Grid ColumnSpacing="2" RowSpacing="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <!--溫度-->
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <!--濁度-->
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <!--酸鹼值-->
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <!--TDS-->
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <!--PH-->
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
-                    <!-- TOD_區塊設計，之後要用C#的方式將其塞到ScrollView_Main當中 -->
-                    <StackLayout Margin="5,5">
-                        <Label x:Name="AquaruimNum" FontSize="25" TextColor="Black"/>
-                        <StackLayout Margin="10,5">
-                            <Grid ColumnSpacing="2" RowSpacing="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <!--溫度-->
-                                    <RowDefinition Height="Auto" /> 
-                                    <RowDefinition Height="Auto" />
-                                    <!--濁度-->
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <!--酸鹼值-->
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <!--TDS-->
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <!--PH-->
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                
-                                <!--溫度區塊-->
-                                <StackLayout Grid.Row="0"
+                                    <!--溫度區塊-->
+                                    <StackLayout Grid.Row="0"
                                              Grid.Column="0"
                                              Style="{x:StaticResource Table_Title_Style}">
-                                    <Label Text="溫度" TextColor="Wheat" FontSize="20"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1"
+                                        <Label Text="溫度" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1"
                                              Grid.Column="0"
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                    <ScrollView Orientation="Horizontal">
-                                        <StackLayout x:Name="StackLatout_Temperature"
+                                        <ScrollView Orientation="Horizontal">
+                                            <StackLayout x:Name="StackLatout_Temperature"
                                                      Padding="0,5,0,5">
-                                        </StackLayout>
-                                    </ScrollView>
-                                </StackLayout>
-                                
-                                <!--濁度區塊-->
-                                <StackLayout Grid.Row="2"
-                                             Grid.Column="0"
-                                             Style="{x:StaticResource Table_Title_Style}">
-                                    <Label Text="濁度" TextColor="Wheat" FontSize="20"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="3"
-                                             Grid.Column="0"
-                                             Style="{x:StaticResource Table_Content_Style}"
-                                             Padding="0,0,0,0"
-                                             BackgroundColor="#4cadec">
-                                    <ScrollView Orientation="Horizontal">
-                                        <StackLayout x:Name="StackLatout_Turbidity"
-                                                     Padding="0,5,0,5">
-                                        </StackLayout>
-                                    </ScrollView>
-                                </StackLayout>
-                                
-                                <!--濁度區塊-->
-                                <StackLayout Grid.Row="4"
-                                             Grid.Column="0"
-                                             Style="{x:StaticResource Table_Title_Style}">
-                                    <Label Text="酸鹼值" TextColor="Wheat" FontSize="20"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="5"
-                                             Grid.Column="0"
-                                             Style="{x:StaticResource Table_Content_Style}"
-                                             Padding="0,0,0,0"
-                                             BackgroundColor="#4cadec">
-                                    <ScrollView Orientation="Horizontal">
-                                        <StackLayout x:Name="StackLatout_PH"
-                                                     Padding="0,5,0,5">
-                                        </StackLayout>
-                                    </ScrollView>
-                                </StackLayout>
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </StackLayout>
 
-                                <!--TDS區塊-->
-                                <StackLayout Grid.Row="6"
+                                    <!--濁度區塊-->
+                                    <StackLayout Grid.Row="2"
                                              Grid.Column="0"
                                              Style="{x:StaticResource Table_Title_Style}">
-                                    <Label Text="TDS" TextColor="Wheat" FontSize="20"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="7"
+                                        <Label Text="濁度" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3"
                                              Grid.Column="0"
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                    <ScrollView Orientation="Horizontal">
-                                        <StackLayout x:Name="StackLatout_TDS"
+                                        <ScrollView Orientation="Horizontal">
+                                            <StackLayout x:Name="StackLatout_Turbidity"
                                                      Padding="0,5,0,5">
-                                        </StackLayout>
-                                    </ScrollView>
-                                </StackLayout>
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </StackLayout>
 
-                                <!--水位高度區塊-->
-                                <StackLayout Grid.Row="8"
+                                    <!--濁度區塊-->
+                                    <StackLayout Grid.Row="4"
                                              Grid.Column="0"
                                              Style="{x:StaticResource Table_Title_Style}">
-                                    <Label Text="水位高度" TextColor="Wheat" FontSize="20"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="9"
+                                        <Label Text="酸鹼值" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="5"
                                              Grid.Column="0"
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                    <ScrollView Orientation="Horizontal">
-                                        <StackLayout x:Name="StackLatout_WaterLevel"
+                                        <ScrollView Orientation="Horizontal">
+                                            <StackLayout x:Name="StackLatout_PH"
                                                      Padding="0,5,0,5">
-                                        </StackLayout>
-                                    </ScrollView>
-                                </StackLayout>
-                            </Grid>
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </StackLayout>
+
+                                    <!--TDS區塊-->
+                                    <StackLayout Grid.Row="6"
+                                             Grid.Column="0"
+                                             Style="{x:StaticResource Table_Title_Style}">
+                                        <Label Text="TDS" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="7"
+                                             Grid.Column="0"
+                                             Style="{x:StaticResource Table_Content_Style}"
+                                             Padding="0,0,0,0"
+                                             BackgroundColor="#4cadec">
+                                        <ScrollView Orientation="Horizontal">
+                                            <StackLayout x:Name="StackLatout_TDS"
+                                                     Padding="0,5,0,5">
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </StackLayout>
+
+                                    <!--水位高度區塊-->
+                                    <StackLayout Grid.Row="8"
+                                             Grid.Column="0"
+                                             Style="{x:StaticResource Table_Title_Style}">
+                                        <Label Text="水位高度" TextColor="Wheat" FontSize="20"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="9"
+                                             Grid.Column="0"
+                                             Style="{x:StaticResource Table_Content_Style}"
+                                             Padding="0,0,0,0"
+                                             BackgroundColor="#4cadec">
+                                        <ScrollView Orientation="Horizontal">
+                                            <StackLayout x:Name="StackLatout_WaterLevel"
+                                                     Padding="0,5,0,5">
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
-            </ScrollView>
-
+                </ScrollView>
+            </RefreshView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

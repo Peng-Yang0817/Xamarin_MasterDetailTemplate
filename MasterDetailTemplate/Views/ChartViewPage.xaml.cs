@@ -31,6 +31,9 @@ namespace MasterDetailTemplate.Views
             {"3", "Heigh Level"}
         };
 
+        //等待伺服器回應的時間設定
+        private const int WaitTimeToServerResponese = 2500;
+
         public ChartViewPage()
         {
             InitializeComponent();
@@ -45,7 +48,10 @@ namespace MasterDetailTemplate.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            Appearing_RefreshView.IsEnabled = true;
+            Appearing_RefreshView.IsRefreshing = true;
 
+            // 設定魚缸標題
             SetAquaruimNum();
 
             // 取得圖表所需資料
@@ -85,10 +91,37 @@ namespace MasterDetailTemplate.Views
             // ============================================== 水位高度
             // 設定水位高度圖表
             SetWaterLevelChart(DateTiemString, DataString_WaterLevel);
+
+            Appearing_RefreshView.IsRefreshing = false;
+            Appearing_RefreshView.IsEnabled = false;
         }
 
-        // ========================================================================== 塞資料區塊
+        /// <summary>
+        /// 覆寫離開頁面後把該頁面清空的動作
+        /// </summary>
+        protected override async void OnDisappearing()
+        {
+            // 清空魚缸標題
+            ClearAquaruimNumLabel();
 
+            // 清空溫度的曲線圖的StackLayout
+            StackLatout_Temperature.Children.Clear();
+
+            // 清空濁度的曲線圖的StackLayout
+            StackLatout_Turbidity.Children.Clear();
+
+            // 清空PH的曲線圖的StackLayout
+            StackLatout_PH.Children.Clear();
+
+            // 清空硬度的曲線圖的StackLayout
+            StackLatout_TDS.Children.Clear();
+
+            // 清空水位高度的曲線圖的StackLayout
+            StackLatout_WaterLevel.Children.Clear();
+
+            await Task.Delay(100);
+        }
+        // ========================================================================== 塞資料區塊
 
         /// <summary>
         /// 設定溫度圖表
@@ -106,7 +139,6 @@ namespace MasterDetailTemplate.Views
             string unit = " °C";
 
             // 測試用的溫度狀態List<ChartEntry>
-
             List<ChartEntry> entries_Temperature = new List<ChartEntry>();
 
             for (int i = 0; i < 6; i++)
@@ -334,7 +366,7 @@ namespace MasterDetailTemplate.Views
 
                 // 設定 Timeout 為 2.5 秒
                 wb.UploadValuesAsync(new Uri(urlSendUse), "POST", dataSendUse);
-                await Task.Delay(2500);
+                await Task.Delay(WaitTimeToServerResponese);
                 if (wb.IsBusy)
                 {
                     wb.CancelAsync();
@@ -467,6 +499,14 @@ namespace MasterDetailTemplate.Views
         public void SetAquaruimNum()
         {
             AquaruimNum.Text = "魚缸 : " + getAquariumNum;
+        }
+
+        /// <summary>
+        /// 離開頁面時，清空魚缸標題編號的LABLE
+        /// </summary>
+        public void ClearAquaruimNumLabel()
+        {
+            AquaruimNum.Text = "魚缸 : ";
         }
 
         /// <summary>

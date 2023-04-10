@@ -28,6 +28,9 @@ namespace MasterDetailTemplate.Views
         public string AquariumUnitNum = "AquariumUnitNum";
         public Dictionary<string, string> keyValuePairs_WaterLevel = new Dictionary<string, string>();
         public Dictionary<string, string> keyValuePairs_WaterType = new Dictionary<string, string>();
+        
+        //等待伺服器回應的時間設定
+        private const int WaitTimeToServerResponese = 2500;
 
 
         // 準備轉跳頁面所需的物件
@@ -42,6 +45,9 @@ namespace MasterDetailTemplate.Views
             WaterLevelDefinit();
         }
 
+        /// <summary>
+        /// 頁面每次訪問都會調用
+        /// </summary>
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -49,30 +55,52 @@ namespace MasterDetailTemplate.Views
 
             StackLayout_Miain.Children.Clear();
 
+            // 按鈕能否點擊資料容器
+            Dictionary<string, bool> ButtonStaus = new Dictionary<string, bool>();
+
+            // 取當前使用者資料
             List<AquaruimSituation> DataList = await GetMyAquaruimSituationsData();
 
-            Dictionary<string, bool> ButtonStaus = await GetAquariumDataStatus();
 
             // 查看伺服器是否有正確回應，也就是看DataList是否為null，不為null才能進去做後續的事
             if (DataList != null)
             {
+                // 使用者沒有任何魚缸資料
                 if (DataList.Count <= 0)
                 {
                     await DisplayAlert("提醒",
                         "用戶尚未註冊任何魚缸",
                         "OK");
                 }
-
-                // 按鈕能不能點的資訊，比對長度是否相同
-                if (DataList.Count == ButtonStaus.Count)
+                // 使用者有魚缸資料
+                else
                 {
-                    foreach (var item in DataList)
+                    // 取當前按鈕能否點擊資料
+                    ButtonStaus = await GetAquariumDataStatus();
+
+                    // 按鈕能不能點的資訊，比對長度是否相同
+                    if (DataList.Count != ButtonStaus.Count)
                     {
-                        AddAquariumTemplate(item, ButtonStaus);
+                        // 若按鈕能不能點的資訊與資料長度不相符，代表渲染前端會失敗，必須做處理
+                        await DisplayAlert("錯誤",
+                        "資料數量比對異常! 請稍後再試!",
+                        "OK");
+
+                    }
+                    // 若相同，則直接開始渲染前端畫面
+                    else
+                    {
+                        foreach (var item in DataList)
+                        {
+                            AddAquariumTemplate(item, ButtonStaus);
+                        }
                     }
                 }
+
             }
+
             Appearing_RefreshView.IsRefreshing = false;
+            myRefreshView.IsRefreshing = false;
         }
 
         /// <summary>
@@ -99,31 +127,50 @@ namespace MasterDetailTemplate.Views
             Appearing_RefreshView.IsRefreshing = true;
             StackLayout_Miain.Children.Clear();
 
+            // 按鈕能否點擊資料容器
+            Dictionary<string, bool> ButtonStaus = new Dictionary<string, bool>();
+
             // 取當前使用者資料
             List<AquaruimSituation> DataList = await GetMyAquaruimSituationsData();
 
-            // 按鈕能否點擊
-            Dictionary<string, bool> ButtonStaus = await GetAquariumDataStatus();
 
             // 查看伺服器是否有正確回應，也就是看DataList是否為null，不為null才能進去做後續的事
             if (DataList != null)
             {
+                // 使用者沒有任何魚缸資料
                 if (DataList.Count <= 0)
                 {
                     await DisplayAlert("提醒",
                         "用戶尚未註冊任何魚缸",
                         "OK");
                 }
-
-                // 按鈕能不能點的資訊，比對長度是否相同
-                if (DataList.Count == ButtonStaus.Count)
+                // 使用者有魚缸資料
+                else
                 {
-                    foreach (var item in DataList)
+                    // 取當前按鈕能否點擊資料
+                    ButtonStaus = await GetAquariumDataStatus();
+
+                    // 按鈕能不能點的資訊，比對長度是否相同
+                    if (DataList.Count != ButtonStaus.Count)
                     {
-                        AddAquariumTemplate(item, ButtonStaus);
+                        // 若按鈕能不能點的資訊與資料長度不相符，代表渲染前端會失敗，必須做處理
+                        await DisplayAlert("錯誤",
+                        "資料數量比對異常! 請稍後再試!",
+                        "OK");
+                        
+                    }
+                    // 若相同，則直接開始渲染前端畫面
+                    else
+                    {
+                        foreach (var item in DataList)
+                        {
+                            AddAquariumTemplate(item, ButtonStaus);
+                        }
                     }
                 }
+
             }
+
             Appearing_RefreshView.IsRefreshing = false;
             myRefreshView.IsRefreshing = false;
         }
@@ -171,6 +218,9 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetRow(stackLayout_dataTime_title, 0);
             Xamarin.Forms.Grid.SetColumn(stackLayout_dataTime_title, 0);
 
+            DateTime DataDate = item.createTime;
+            string DataDate_string = DataDate.ToString("yy/MM/dd-HH:mm");
+
             var stackLayout_dataTime_value = new StackLayout
             {
                 Style = (Style)Application.Current.Resources["Table_Content_Style"],
@@ -178,7 +228,7 @@ namespace MasterDetailTemplate.Views
                 {
                     new Label
                     {
-                        Text = item.createTime.ToString(),
+                        Text = DataDate_string,
                         TextColor = Color.Black,
                         FontSize = 18
                     }
@@ -390,7 +440,7 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetColumn(stackLayout_waterPH_value, 1);
 
 
-            // ============================================================================= 插入的新
+            // ============================================================================= 插入的新StackLayout
             bool AQStatus = ButtonStaus[item.AquariumUnitNum];
             Button button = new Button();
 
@@ -498,14 +548,13 @@ namespace MasterDetailTemplate.Views
 
                 dataSendUse["Auth001Id"] = _Auth001Id;
 
-                // 設定 Timeout 為 2.5 秒
+                // 等待伺服器回應
                 wb.UploadValuesAsync(new Uri(urlSendUse), "POST", dataSendUse);
-                await Task.Delay(2500);
+                await Task.Delay(WaitTimeToServerResponese);
                 if (wb.IsBusy)
                 {
                     wb.CancelAsync();
                     await DisplayAlert("警告", "無法連線至伺服器，請稍後再試。", "確定");
-                    myRefreshView.IsRefreshing = false;
                     return null;
                 }
 
@@ -531,34 +580,46 @@ namespace MasterDetailTemplate.Views
             string _Auth001Id = app.Properties[Auth001Id].ToString();
             Dictionary<string, bool> DataList = new Dictionary<string, bool>();
 
-            var wb = new WebClient();
-            var dataSendUse = new NameValueCollection();
+            using (var wb = new WebClient())
+            {
+                var dataSendUse = new NameValueCollection();
 
-            string urlSendUse = "http://192.168.0.80:52809/MobileService/GetAquariumDataStatus";
+                string urlSendUse = "http://192.168.0.80:52809/MobileService/GetAquariumDataStatus";
 
-            string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
-            wb.Headers.Add("Authorization", Bearer);
+                string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
+                wb.Headers.Add("Authorization", Bearer);
 
-            dataSendUse["Auth001Id"] = _Auth001Id;
+                dataSendUse["Auth001Id"] = _Auth001Id;
 
-            var responseSendUse = await wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
+                // 等待伺服器回應
+                wb.UploadValuesAsync(new Uri(urlSendUse), "POST", dataSendUse);
+                await Task.Delay(WaitTimeToServerResponese);
+                if (wb.IsBusy)
+                {
+                    wb.CancelAsync();
+                    return null;
+                }
 
-            string str = Encoding.UTF8.GetString(responseSendUse);
+                var responseSendUse = await wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
 
-            // 解析JSON string
-            DataList = JsonConvert.DeserializeObject<Dictionary<string, bool>>(str);
+                string str = Encoding.UTF8.GetString(responseSendUse);
 
-            return DataList;
+                // 解析JSON string
+                DataList = JsonConvert.DeserializeObject<Dictionary<string, bool>>(str);
+
+                return DataList;
+            }
+
         }
 
 
         /// <summary>
-        /// 轉跳至新頁面，顯示圖表，目前先用測試頁代替
+        /// 轉跳至新頁面，顯示圖表，跳轉前必須先把當前的魚缸目標紀錄在 Properties 中。
         /// </summary>
         public async void Button_ChartView_Clicked(object sender, EventArgs e)
         {
             var button = sender as Button;
-            // 取的按鈕的代表的魚缸編號
+            // 取的按鈕的代表的魚缸編號，這裡因為找不到其他方法來賦予按鈕資料，所以暫且只有想到這方法
             var aquariumUnitNum = button.ClassId;
 
             // 將魚缸編號存入Properties，方便跳轉業面後能調用
