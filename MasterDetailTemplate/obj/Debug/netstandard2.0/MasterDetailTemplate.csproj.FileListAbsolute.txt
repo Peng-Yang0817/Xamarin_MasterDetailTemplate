@@ -56,3 +56,4 @@ C:\Codding\開發水質管控\APP\Xamarin_MasterDetailTemplate\MasterDetailTempl
 C:\Codding\開發水質管控\APP\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\ref\MasterDetailTemplate.dll
 C:\Codding\開發水質管控\APP\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\Views\AquariumWaterSituationPage.xaml.g.cs
 C:\Codding\開發水質管控\APP\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\Views\ChartViewPage.xaml.g.cs
+C:\Codding\開發水質管控\APP\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\Views\HistoricalRecordSearchPage.xaml.g.cs

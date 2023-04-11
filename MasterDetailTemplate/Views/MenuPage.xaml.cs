@@ -27,7 +27,8 @@ namespace MasterDetailTemplate.Views
                     // new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                     new HomeMenuItem {Id = MenuItemType.About, Title="首頁" },
                     new HomeMenuItem { Id = MenuItemType.LoginAndLogout,Title="用戶介面"},
-                    new HomeMenuItem {Id = MenuItemType.AquariumWaterSituation, Title="魚缸水質狀況" }
+                    new HomeMenuItem {Id = MenuItemType.AquariumWaterSituation, Title="魚缸水質狀況" },
+                    new HomeMenuItem {Id = MenuItemType.HistoricalRecordSearch, Title="綁定記錄查詢" }
                 };
 
 

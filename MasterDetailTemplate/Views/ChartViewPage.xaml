@@ -47,7 +47,8 @@
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                        <ScrollView Orientation="Horizontal">
+                                        <ScrollView Orientation="Horizontal"
+                                                    x:Name="ScrollView_Temperature">
                                             <StackLayout x:Name="StackLatout_Temperature"
                                                      Padding="0,5,0,5">
                                             </StackLayout>
@@ -65,14 +66,15 @@
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                        <ScrollView Orientation="Horizontal">
+                                        <ScrollView Orientation="Horizontal"
+                                                    x:Name= "ScrollView_Turbidity">
                                             <StackLayout x:Name="StackLatout_Turbidity"
                                                      Padding="0,5,0,5">
                                             </StackLayout>
                                         </ScrollView>
                                     </StackLayout>
 
-                                    <!--濁度區塊-->
+                                    <!--PH區塊-->
                                     <StackLayout Grid.Row="4"
                                              Grid.Column="0"
                                              Style="{x:StaticResource Table_Title_Style}">
@@ -83,7 +85,8 @@
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                        <ScrollView Orientation="Horizontal">
+                                        <ScrollView Orientation="Horizontal"
+                                                    x:Name= "ScrollView_PH">
                                             <StackLayout x:Name="StackLatout_PH"
                                                      Padding="0,5,0,5">
                                             </StackLayout>
@@ -101,7 +104,8 @@
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                        <ScrollView Orientation="Horizontal">
+                                        <ScrollView Orientation="Horizontal"
+                                                    x:Name= "ScrollView_TDS">
                                             <StackLayout x:Name="StackLatout_TDS"
                                                      Padding="0,5,0,5">
                                             </StackLayout>
@@ -119,7 +123,8 @@
                                              Style="{x:StaticResource Table_Content_Style}"
                                              Padding="0,0,0,0"
                                              BackgroundColor="#4cadec">
-                                        <ScrollView Orientation="Horizontal">
+                                        <ScrollView Orientation="Horizontal"
+                                                    x:Name= "ScrollView_WaterLevel">
                                             <StackLayout x:Name="StackLatout_WaterLevel"
                                                      Padding="0,5,0,5">
                                             </StackLayout>

@@ -13,6 +13,8 @@ using Microcharts.Forms;
 using System.Net;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
+
 
 namespace MasterDetailTemplate.Views
 {
@@ -32,7 +34,7 @@ namespace MasterDetailTemplate.Views
         };
 
         //等待伺服器回應的時間設定
-        private const int WaitTimeToServerResponese = 2500;
+        private const int WaitTimeToServerResponese = 3500;
 
         public ChartViewPage()
         {
@@ -91,6 +93,9 @@ namespace MasterDetailTemplate.Views
             // ============================================== 水位高度
             // 設定水位高度圖表
             SetWaterLevelChart(DateTiemString, DataString_WaterLevel);
+
+            // 把所有圖表拉到最右邊
+            // await ChartScollToRight();
 
             Appearing_RefreshView.IsRefreshing = false;
             Appearing_RefreshView.IsEnabled = false;
@@ -388,6 +393,20 @@ namespace MasterDetailTemplate.Views
 
 
         // ========================================================================== 定義模板區塊
+
+        /// <summary>
+        /// 全部把圖表的Scroll拉到最右邊
+        /// </summary>
+        public async Task ChartScollToRight() {
+
+            var scrollView = FindByName("ScrollView_Temperature") as ScrollView;
+
+            await ScrollView_Temperature.ScrollToAsync(800, 0, true);
+            await ScrollView_Turbidity.ScrollToAsync(800, 0, true);
+            await ScrollView_PH.ScrollToAsync(800, 0, true);
+            await ScrollView_TDS.ScrollToAsync(800, 0, true);
+            await ScrollView_WaterLevel.ScrollToAsync(800, 0, true);
+        }
 
         /// <summary>
         /// 定義 ChartView 模板

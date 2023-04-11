@@ -42,8 +42,11 @@ namespace MasterDetailTemplate.Views
                     case (int)MenuItemType.LoginAndLogout: // UserLoginPages
                         MenuPages.Add(id, new NavigationPage(new LoginAndLogoutPage()));
                         break;
-                    case (int)MenuItemType.AquariumWaterSituation: // UserLoginPages
+                    case (int)MenuItemType.AquariumWaterSituation: // AquariumWaterSituationPage
                         MenuPages.Add(id, new NavigationPage(new AquariumWaterSituationPage()));
+                        break;
+                    case (int)MenuItemType.HistoricalRecordSearch: // HistoricalRecordSearchPage
+                        MenuPages.Add(id, new NavigationPage(new HistoricalRecordSearchPage()));
                         break;
                 }
             }
