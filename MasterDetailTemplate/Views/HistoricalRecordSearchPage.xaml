@@ -2,12 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterDetailTemplate.Views.HistoricalRecordSearchPage"
-             Title="魚缸歷史紀錄">
+             Title="邦定紀錄查詢">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="魚缸歷史紀錄!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout Margin="10,0,10,5">
+            <Frame BackgroundColor="White" BorderColor="Gray" CornerRadius="8" Margin="10">
+                <StackLayout>
+                    <Label Text="輸入查詢的魚缸編號(16字符)" 
+                           FontSize="Large"
+                           HorizontalOptions="Center"
+                           Margin="0,20,0,30"/>
+
+                    <Entry x:Name="txtFishTankNum"
+                            Placeholder="魚缸編號"
+                            TextChanged="TxtFishTankNumber_TextChanged"
+                            Margin="0,0,0,30"
+                            MaxLength="16"/>
+
+                    <Button x:Name="btnSearch"
+                            Text="查詢"
+                            BackgroundColor="#74bbf3"
+                            TextColor="White"
+                            Clicked="BtnSearch_Clicked"
+                            CornerRadius="8"
+                            WidthRequest="120"
+                            HeightRequest="44"/>
+                </StackLayout>
+            </Frame>
+            
+            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

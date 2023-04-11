@@ -14,7 +14,7 @@ using System.Net;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
-
+using System.Threading;
 
 namespace MasterDetailTemplate.Views
 {
@@ -369,17 +369,28 @@ namespace MasterDetailTemplate.Views
                 // 準備魚缸編號，用於查詢
                 dataSendUse["AquariumNum"] = getAquariumNum;
 
-                // 設定 Timeout 為 2.5 秒
-                wb.UploadValuesAsync(new Uri(urlSendUse), "POST", dataSendUse);
-                await Task.Delay(WaitTimeToServerResponese);
-                if (wb.IsBusy)
+                // 使用 CancellationTokenSource 取消等待
+                var cts = new CancellationTokenSource();
+
+                // 建立 timeoutTask 來等待 WaitTimeToServerResponese 的時間
+                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(10), cts.Token);
+
+                // 建立 responseTask 來執行伺服器回應
+                var responseTask = wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
+
+                // 等待 timeoutTask 與 responseTask 中的其中一個 Task 完成
+                Task completedTask = await Task.WhenAny(timeoutTask, responseTask);
+
+                cts.Cancel();
+
+                if (completedTask == timeoutTask)
                 {
-                    wb.CancelAsync();
-                    await DisplayAlert("警告", "無法連線至伺服器，請稍後再試。", "確定");
+                    await DisplayAlert("警告", "伺服器回應超時，請稍後再試。", "確定");
                     return null;
                 }
 
-                var responseSendUse = await wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
+                // 如果 responseTask 完成，則繼續執行下面的程式碼
+                var responseSendUse = await responseTask;
 
                 string str = Encoding.UTF8.GetString(responseSendUse);
 
