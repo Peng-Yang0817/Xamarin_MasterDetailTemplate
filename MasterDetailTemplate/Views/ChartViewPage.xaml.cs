@@ -15,6 +15,7 @@ using System.Collections.Specialized;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using System.Threading;
+using MasterDetailTemplate.Models.ServerAccessSet;
 
 namespace MasterDetailTemplate.Views
 {
@@ -25,6 +26,8 @@ namespace MasterDetailTemplate.Views
         public App app = Application.Current as App;
         public string AquariumUnitNum = "AquariumUnitNum";
         public string Auth001Id = "Auth001Id";
+
+        private serverAccessSet server = new serverAccessSet();
 
         public Dictionary<string, string> keyValuePairs_WaterLevel = new Dictionary<string, string>
         {
@@ -52,6 +55,8 @@ namespace MasterDetailTemplate.Views
             base.OnAppearing();
             Appearing_RefreshView.IsEnabled = true;
             Appearing_RefreshView.IsRefreshing = true;
+
+            await Task.Delay(500);
 
             // 設定魚缸標題
             SetAquaruimNum();
@@ -361,7 +366,7 @@ namespace MasterDetailTemplate.Views
             {
                 var dataSendUse = new NameValueCollection();
 
-                string urlSendUse = "http://192.168.0.80:52809/MobileService/GetAquariumDatasForAquaruimId";
+                string urlSendUse = server.ServerIP + "/MobileService/GetAquariumDatasForAquaruimId";
 
                 string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
                 wb.Headers.Add("Authorization", Bearer);
@@ -373,7 +378,7 @@ namespace MasterDetailTemplate.Views
                 var cts = new CancellationTokenSource();
 
                 // 建立 timeoutTask 來等待 WaitTimeToServerResponese 的時間
-                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(10), cts.Token);
+                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(server.AccessTimeOut), cts.Token);
 
                 // 建立 responseTask 來執行伺服器回應
                 var responseTask = wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);

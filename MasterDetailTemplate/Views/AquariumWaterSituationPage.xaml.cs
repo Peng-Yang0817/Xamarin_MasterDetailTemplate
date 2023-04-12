@@ -20,6 +20,7 @@ using MasterDetailTemplate.Models;
 using Xamarin.Essentials;
 using System.Net.Http.Headers;
 using System.Threading;
+using MasterDetailTemplate.Models.ServerAccessSet;
 
 namespace MasterDetailTemplate.Views
 {
@@ -32,9 +33,7 @@ namespace MasterDetailTemplate.Views
         public Dictionary<string, string> keyValuePairs_WaterLevel = new Dictionary<string, string>();
         public Dictionary<string, string> keyValuePairs_WaterType = new Dictionary<string, string>();
 
-        //等待伺服器回應的時間設定
-        private const int WaitTimeToServerResponese = 2500;
-
+        private serverAccessSet server = new serverAccessSet();
 
         // 準備轉跳頁面所需的物件
         private static ContentPageActivationService ContentPageActivationService =
@@ -65,6 +64,8 @@ namespace MasterDetailTemplate.Views
                 Appearing_RefreshView.IsRefreshing = true;
 
                 StackLayout_Miain.Children.Clear();
+
+                await Task.Delay(500);
 
                 // 按鈕能否點擊資料容器
                 Dictionary<string, bool> ButtonStaus = new Dictionary<string, bool>();
@@ -147,6 +148,8 @@ namespace MasterDetailTemplate.Views
             {
                 Appearing_RefreshView.IsRefreshing = true;
                 StackLayout_Miain.Children.Clear();
+
+                await Task.Delay(500);
 
                 // 按鈕能否點擊資料容器
                 Dictionary<string, bool> ButtonStaus = new Dictionary<string, bool>();
@@ -564,7 +567,7 @@ namespace MasterDetailTemplate.Views
             {
                 var dataSendUse = new NameValueCollection();
 
-                string urlSendUse = "http://192.168.0.80:52809/MobileService/GetAquariumDatas";
+                string urlSendUse = server.ServerIP + "/MobileService/GetAquariumDatas";
 
                 string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
                 wb.Headers.Add("Authorization", Bearer);
@@ -575,7 +578,7 @@ namespace MasterDetailTemplate.Views
                 var cts = new CancellationTokenSource();
 
                 // 建立 timeoutTask 來等待 WaitTimeToServerResponese 的時間
-                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(5), cts.Token);
+                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(server.AccessTimeOut), cts.Token);
 
                 // 建立 responseTask 來執行伺服器回應
                 var responseTask = wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);
@@ -618,7 +621,7 @@ namespace MasterDetailTemplate.Views
             {
                 var dataSendUse = new NameValueCollection();
 
-                string urlSendUse = "http://192.168.0.80:52809/MobileService/GetAquariumDataStatus";
+                string urlSendUse = server.ServerIP + "/MobileService/GetAquariumDataStatus";
 
                 string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
                 wb.Headers.Add("Authorization", Bearer);
@@ -629,7 +632,7 @@ namespace MasterDetailTemplate.Views
                 var cts = new CancellationTokenSource();
 
                 // 建立 timeoutTask 來等待 WaitTimeToServerResponese 的時間
-                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(5), cts.Token);
+                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(server.AccessTimeOut), cts.Token);
 
                 // 建立 responseTask 來執行伺服器回應
                 var responseTask = wb.UploadValuesTaskAsync(urlSendUse, "POST", dataSendUse);

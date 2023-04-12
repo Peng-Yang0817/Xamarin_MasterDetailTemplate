@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Collections.Specialized;
 using System.Net;
 using MasterDetailTemplate.Models.LoginAndLogoutPage;
+using MasterDetailTemplate.Models.ServerAccessSet;
 
 namespace MasterDetailTemplate.Views
 {
@@ -26,6 +27,8 @@ namespace MasterDetailTemplate.Views
         public string UserName = "UserName";
         public string LoginUser = "";
         public string Auth001Id = "Auth001Id";
+
+        private serverAccessSet server = new serverAccessSet();
 
         public LoginAndLogoutPage()
         {
@@ -211,7 +214,7 @@ namespace MasterDetailTemplate.Views
             var wb = new WebClient();
             var dataSendUse = new NameValueCollection();
 
-            string urlSendUse = "http://192.168.0.80:52809/MobileService/LoginUserCheckingPost";
+            string urlSendUse = server.ServerIP + "/MobileService/LoginUserCheckingPost";
 
             string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
             wb.Headers.Add("Authorization", Bearer);
@@ -246,7 +249,7 @@ namespace MasterDetailTemplate.Views
             var wb = new WebClient();
             var dataSendUse = new NameValueCollection();
 
-            string urlSendUse = "http://192.168.0.80:52809/MobileService/RegisterUser";
+            string urlSendUse = server.ServerIP + "/MobileService/RegisterUser";
 
             string Bearer = "Bearer " + "jpymJUKgpjPp49GbC6onVCBlNYZfIDHfi5hypNrPXh1";
             wb.Headers.Add("Authorization", Bearer);

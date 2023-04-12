@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using MasterDetailTemplate.Models.ServerAccessSet;
+
 namespace MasterDetailTemplate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoricalRecordSearchPage : ContentPage
     {
         public int EntryLength = 0;
+
+        private serverAccessSet server = new serverAccessSet();
         public HistoricalRecordSearchPage()
         {
             InitializeComponent();
@@ -37,15 +41,21 @@ namespace MasterDetailTemplate.Views
 
         private async void BtnSearch_Clicked(object sender, EventArgs e)
         {
-            if (EntryLength != 16)
+            if (!server.IsNetworkAvailable())
             {
-                await DisplayAlert("警告", "請輸入完整的16位元組。", "確定");
+                await DisplayAlert("警告", "請先連接至網際網路。", "確定");
             }
             else
             {
-                await DisplayAlert("成功", "開始查詢。", "確定");
+                if (EntryLength != 16)
+                {
+                    await DisplayAlert("警告", "請輸入完整的16位元組。", "確定");
+                }
+                else
+                {
+                    await DisplayAlert("成功", "開始查詢。", "確定");
+                }
             }
-
         }
     }
 }
