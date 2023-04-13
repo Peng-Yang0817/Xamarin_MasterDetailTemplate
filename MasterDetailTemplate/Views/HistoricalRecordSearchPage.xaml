@@ -2,127 +2,104 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterDetailTemplate.Views.HistoricalRecordSearchPage"
-             Title="邦定紀錄查詢">
+             Title="綁定紀錄查詢">
     <ContentPage.Content>
-
-        <StackLayout Margin="10,0,10,5">
-            <Frame BackgroundColor="White" BorderColor="Gray" CornerRadius="8" Margin="10">
-                <StackLayout>
-                    <Label Text="輸入查詢的魚缸編號(16字符)" 
+        <RefreshView x:Name="Appearing_RefreshView" RefreshColor="#2196f3" IsEnabled="False">
+            <ScrollView>
+                <StackLayout Margin="10,0,10,5">
+                    <!-- 上方搜尋區塊 -->
+                    <Frame BackgroundColor="#ffe6dc" BorderColor="Gray" CornerRadius="8" Margin="10">
+                        <StackLayout BackgroundColor="#ffe6dc">
+                            <Label Text="輸入查詢的魚缸編號(16字符)" 
                            FontSize="Large"
                            HorizontalOptions="Center"
-                           Margin="0,20,0,30"/>
+                           Margin="0,40,0,30"/>
 
-                    <Entry x:Name="txtFishTankNum"
+                            <Entry x:Name="txtFishTankNum"
                             Placeholder="魚缸編號"
                             TextChanged="TxtFishTankNumber_TextChanged"
                             Margin="0,0,0,30"
                             MaxLength="16"/>
 
-                    <Button x:Name="btnSearch"
+                            <Button x:Name="btnSearch"
                             Text="查詢"
                             BackgroundColor="#74bbf3"
                             TextColor="White"
                             Clicked="BtnSearch_Clicked"
                             CornerRadius="8"
                             WidthRequest="120"
-                            HeightRequest="44"/>
-                </StackLayout>
-            </Frame>
+                            HeightRequest="44"
+                            Margin="0,0,0,40"/>
+                        </StackLayout>
+                    </Frame>
 
-            <StackLayout Margin="10,20,10,10">
-                <Grid ColumnSpacing="2" RowSpacing="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="1*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0"
+                    <!-- 查詢結果標題區塊 -->
+                    <StackLayout Margin="10,20,10,0">
+                        <Grid ColumnSpacing="2" RowSpacing="1" Margin="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0"
                                 Grid.Column="0"
                                  Grid.ColumnSpan="4"
                                 Style="{x:StaticResource Table_Title_Style}">
-                        <Label Text="查詢結果" TextColor="Wheat" FontSize="24" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
+                                <Label Text="查詢結果" TextColor="Wheat" FontSize="24" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
 
-                    <!-- 上方是寫死的區塊，可以不用動 -->
-                    <StackLayout Grid.Row="1"
+                            <!-- 上方是寫死的區塊，可以不用動 -->
+                            <StackLayout Grid.Row="1"
                                 Grid.Column="0"
                                 Style="{x:StaticResource Table_Title_Style}">
-                        <Label Text="次數" TextColor="Wheat" FontSize="16" 
+                                <Label Text="次數" TextColor="Wheat" FontSize="16" 
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1"
+                            </StackLayout>
+                            <StackLayout Grid.Row="1"
                                 Grid.Column="1"
                                 Style="{x:StaticResource Table_Title_Style}">
-                        <Label Text="綁定日期" TextColor="Wheat" FontSize="16" 
+                                <Label Text="綁定日期" TextColor="Wheat" FontSize="16" 
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1"
+                            </StackLayout>
+                            <StackLayout Grid.Row="1"
                                 Grid.Column="2"
                                 Style="{x:StaticResource Table_Title_Style}">
-                        <Label Text="編輯日期" TextColor="Wheat" FontSize="16" 
+                                <Label Text="編輯日期" TextColor="Wheat" FontSize="16" 
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1"
+                            </StackLayout>
+                            <StackLayout Grid.Row="1"
                                 Grid.Column="3"
                                 Style="{x:StaticResource Table_Title_Style}">
-                        <Label Text="狀態" TextColor="Wheat" FontSize="16" 
+                                <Label Text="狀態" TextColor="Wheat" FontSize="16" 
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"/>
-                    </StackLayout>
-                    <!-- 下方是要參入資料的區塊 -->
+                            </StackLayout>
+                        </Grid>
 
-                    <StackLayout Grid.Row="2"
-                                Grid.Column="0"
-                                
-                                Style="{x:StaticResource Table_Content_Style}">
-                        <Label Text="1" TextColor="Black" FontSize="16" 
-                               HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="2"
-                                Grid.Column="1"
-                                Style="{x:StaticResource Table_Content_Style}">
-                        <Label Text="22/10/18" TextColor="Black" FontSize="14" 
-                               HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
-                        <Label Text="23:00" TextColor="Black" FontSize="14" 
-                               HorizontalTextAlignment="End"
-                               VerticalTextAlignment="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="2"
-                                Grid.Column="2"
-                                Style="{x:StaticResource Table_Content_Style}">
-                        <Label Text="22/10/24" TextColor="Black" FontSize="14" 
-                               HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
-                        <Label Text="19:12" TextColor="Black" FontSize="14" 
-                               HorizontalTextAlignment="End"
-                               VerticalTextAlignment="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="2"
-                                Grid.Column="3"
-                                Style="{x:StaticResource Table_Content_Style}">
-                        <Label Text="解綁" TextColor="Black" FontSize="16" 
-                               HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
+
                     </StackLayout>
 
 
+                    <ScrollView Margin="10,0,10,5">
+                        <!-- 塞資料的StackLayout -->
 
-                    
-                </Grid>
-            </StackLayout>
+                        <StackLayout x:Name="stackLayout_DataList" Padding="0">
 
-        </StackLayout>
+                        </StackLayout>
+
+                    </ScrollView>
+                </StackLayout>
+            </ScrollView>
+            
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>
