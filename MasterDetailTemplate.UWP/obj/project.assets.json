@@ -253,7 +253,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -703,11 +703,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -723,8 +723,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -1014,7 +1014,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -1484,11 +1484,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -1504,8 +1504,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -1795,7 +1795,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -2266,11 +2266,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -2286,8 +2286,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -2576,7 +2576,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -2869,11 +2869,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -2889,8 +2889,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -3180,7 +3180,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -3650,11 +3650,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -3670,8 +3670,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -3961,7 +3961,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -4432,11 +4432,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -4452,8 +4452,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -4743,7 +4743,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -5213,11 +5213,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -5233,8 +5233,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -5524,7 +5524,7 @@
           "ref/uap10.0.15138/netstandard.dll": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -5995,11 +5995,11 @@
           "lib/uap10.0.16299/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.495": {
+      "Xamarin.Forms/4.7.0.1351": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -6015,8 +6015,8 @@
           "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll": {}
         },
         "build": {
-          "build/Xamarin.Forms.props": {},
-          "build/Xamarin.Forms.targets": {}
+          "buildTransitive/Xamarin.Forms.props": {},
+          "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
@@ -6496,10 +6496,10 @@
         "runtime.json"
       ]
     },
-    "Microsoft.UI.Xaml/2.3.191211002": {
-      "sha512": "Sr27CVH8Dh4jSPYXKYLrMeuNfPFZSh1/t5W/xD8MKjDlPdv9vHQdCFUCtMqEKZalNQIo35UUSV6jgl5ZeRihIg==",
+    "Microsoft.UI.Xaml/2.4.2": {
+      "sha512": "EPuBFtyrKi7VweJEB6pBQE9lsQKMT0xaHHsQwDnm5yusYFGRCnPLuwptRfEeXbZemkpnXU6NmtC7FY5WBMqxGA==",
       "type": "package",
-      "path": "microsoft.ui.xaml/2.3.191211002",
+      "path": "microsoft.ui.xaml/2.4.2",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -6517,13 +6517,13 @@
         "lib/uap10.0/Microsoft.UI.Xaml.xml",
         "lib/uap10.0/Microsoft.UI.Xaml/Themes/Generic.xaml",
         "license.txt",
-        "microsoft.ui.xaml.2.3.191211002.nupkg.sha512",
+        "microsoft.ui.xaml.2.4.2.nupkg.sha512",
         "microsoft.ui.xaml.nuspec",
         "readme.txt",
-        "tools/AppX/arm/Release/Microsoft.UI.Xaml.2.3.appx",
-        "tools/AppX/arm64/Release/Microsoft.UI.Xaml.2.3.appx",
-        "tools/AppX/x64/Release/Microsoft.UI.Xaml.2.3.appx",
-        "tools/AppX/x86/Release/Microsoft.UI.Xaml.2.3.appx",
+        "tools/AppX/arm/Release/Microsoft.UI.Xaml.2.4.appx",
+        "tools/AppX/arm64/Release/Microsoft.UI.Xaml.2.4.appx",
+        "tools/AppX/x64/Release/Microsoft.UI.Xaml.2.4.appx",
+        "tools/AppX/x86/Release/Microsoft.UI.Xaml.2.4.appx",
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
@@ -10456,13 +10456,14 @@
         "xamarin.essentials.nuspec"
       ]
     },
-    "Xamarin.Forms/4.5.0.495": {
-      "sha512": "ipufpdjFh+YHHw1E3I+8FIQWk1KmlB77PSHg32YRnuBSCUNEHjoMnvEmY9YCK4DTWfOenV0HHZVvGjB9qDtI9w==",
+    "Xamarin.Forms/4.7.0.1351": {
+      "sha512": "JdhRaNGFZIkbKC1t/fdI0+iJKO0bZx603hWEu15N3ffUkkRji3EQzMvyv6MZggW6cDR88gIsk0NRkLlLF3wMFg==",
       "type": "package",
-      "path": "xamarin.forms/4.5.0.495",
+      "path": "xamarin.forms/4.7.0.1351",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Assets/xamarin_128x128.png",
         "build/MonoAndroid10/proguard.cfg",
         "build/XCODE10/Xamarin.Forms.Platform.iOS.dll",
         "build/XCODE10/Xamarin.Forms.Platform.iOS.pdb",
@@ -10490,6 +10491,33 @@
         "build/netstandard2.0/Xamarin.Forms.Build.Tasks.dll",
         "build/netstandard2.0/Xamarin.Forms.Core.dll",
         "build/netstandard2.0/Xamarin.Forms.Xaml.dll",
+        "buildTransitive/MonoAndroid10/proguard.cfg",
+        "buildTransitive/XCODE10/Xamarin.Forms.Platform.iOS.dll",
+        "buildTransitive/XCODE10/Xamarin.Forms.Platform.iOS.pdb",
+        "buildTransitive/XCODE10/Xamarin.Forms.Platform.macOS.dll",
+        "buildTransitive/XCODE11/Xamarin.Forms.Platform.iOS.dll",
+        "buildTransitive/XCODE11/Xamarin.Forms.Platform.iOS.pdb",
+        "buildTransitive/XCODE11/Xamarin.Forms.Platform.macOS.dll",
+        "buildTransitive/Xamarin.Forms.DefaultItems.props",
+        "buildTransitive/Xamarin.Forms.DefaultItems.targets",
+        "buildTransitive/Xamarin.Forms.props",
+        "buildTransitive/Xamarin.Forms.targets",
+        "buildTransitive/net46/Mono.Cecil.Mdb.dll",
+        "buildTransitive/net46/Mono.Cecil.Pdb.dll",
+        "buildTransitive/net46/Mono.Cecil.Rocks.dll",
+        "buildTransitive/net46/Mono.Cecil.dll",
+        "buildTransitive/net46/System.ValueTuple.dll",
+        "buildTransitive/net46/Xamarin.Forms.Build.Tasks.dll",
+        "buildTransitive/net46/Xamarin.Forms.Core.dll",
+        "buildTransitive/net46/Xamarin.Forms.Xaml.dll",
+        "buildTransitive/netstandard2.0/Mono.Cecil.Mdb.dll",
+        "buildTransitive/netstandard2.0/Mono.Cecil.Pdb.dll",
+        "buildTransitive/netstandard2.0/Mono.Cecil.Rocks.dll",
+        "buildTransitive/netstandard2.0/Mono.Cecil.dll",
+        "buildTransitive/netstandard2.0/System.CodeDom.dll",
+        "buildTransitive/netstandard2.0/Xamarin.Forms.Build.Tasks.dll",
+        "buildTransitive/netstandard2.0/Xamarin.Forms.Core.dll",
+        "buildTransitive/netstandard2.0/Xamarin.Forms.Xaml.dll",
         "lib/MonoAndroid10.0/Design/Xamarin.Forms.Core.Design.dll",
         "lib/MonoAndroid10.0/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/MonoAndroid10.0/FormsViewGroup.dll",
@@ -10515,8 +10543,8 @@
         "lib/MonoAndroid10.0/ja/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid10.0/ko/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid10.0/ko/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/pt-br/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/pt-br/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid10.0/pt-BR/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid10.0/pt-BR/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid10.0/ru/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid10.0/ru/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid10.0/zh-Hans/Xamarin.Forms.Core.xml",
@@ -10548,8 +10576,8 @@
         "lib/MonoAndroid90/ja/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid90/ko/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid90/ko/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid90/pt-br/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid90/pt-br/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid90/pt-BR/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid90/pt-BR/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid90/ru/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid90/ru/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid90/zh-Hans/Xamarin.Forms.Core.xml",
@@ -10603,9 +10631,9 @@
         "lib/Xamarin.iOS10/nb/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/nl/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/pl/Xamarin.Forms.Platform.iOS.resources.dll",
-        "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Core.xml",
-        "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Platform.iOS.resources.dll",
-        "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Xaml.xml",
+        "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Core.xml",
+        "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Platform.iOS.resources.dll",
+        "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Xaml.xml",
         "lib/Xamarin.iOS10/pt/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/ro/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/ru/Xamarin.Forms.Core.xml",
@@ -10654,8 +10682,8 @@
         "lib/netstandard2.0/ja/Xamarin.Forms.Xaml.xml",
         "lib/netstandard2.0/ko/Xamarin.Forms.Core.xml",
         "lib/netstandard2.0/ko/Xamarin.Forms.Xaml.xml",
-        "lib/netstandard2.0/pt-br/Xamarin.Forms.Core.xml",
-        "lib/netstandard2.0/pt-br/Xamarin.Forms.Xaml.xml",
+        "lib/netstandard2.0/pt-BR/Xamarin.Forms.Core.xml",
+        "lib/netstandard2.0/pt-BR/Xamarin.Forms.Xaml.xml",
         "lib/netstandard2.0/ru/Xamarin.Forms.Core.xml",
         "lib/netstandard2.0/ru/Xamarin.Forms.Xaml.xml",
         "lib/netstandard2.0/zh-Hans/Xamarin.Forms.Core.xml",
@@ -10695,8 +10723,8 @@
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/Themes/generic.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PageControlStyle.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PickerStyle.xaml",
+        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PromptDialog.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Resources.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Shell/ShellStyles.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/SliderStyle.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/StepperControl.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/TabbedPageStyle.xaml",
@@ -10727,6 +10755,7 @@
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/Themes/generic.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PageControlStyle.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PickerStyle.xaml",
+        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PromptDialog.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Resources.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Shell/ShellStyles.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/SliderStyle.xaml",
@@ -10737,7 +10766,7 @@
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.4.5.0.495.nupkg.sha512",
+        "xamarin.forms.4.7.0.1351.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -10765,7 +10794,7 @@
       "MasterDetailTemplate >= 1.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.1.9",
       "Xamarin.Essentials >= 1.3.1",
-      "Xamarin.Forms >= 4.5.0.495"
+      "Xamarin.Forms >= 4.7.0.1351"
     ]
   },
   "packageFolders": {
@@ -10776,11 +10805,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UWP\\MasterDetailTemplate.UWP.csproj",
+      "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\0412\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UWP\\MasterDetailTemplate.UWP.csproj",
       "projectName": "MasterDetailTemplate.UWP",
-      "projectPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UWP\\MasterDetailTemplate.UWP.csproj",
+      "projectPath": "C:\\Codding\\開發水質管控\\APP\\0412\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UWP\\MasterDetailTemplate.UWP.csproj",
       "packagesPath": "C:\\Users\\tcher\\.nuget\\packages\\",
-      "outputPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UWP\\obj\\",
+      "outputPath": "C:\\Codding\\開發水質管控\\APP\\0412\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -10802,8 +10831,8 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
-              "projectPath": "C:\\Codding\\開發水質管控\\APP\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj"
+            "C:\\Codding\\開發水質管控\\APP\\0412\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
+              "projectPath": "C:\\Codding\\開發水質管控\\APP\\0412\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj"
             }
           }
         }
@@ -10822,7 +10851,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[4.5.0.495, )"
+            "version": "[4.7.0.1351, )"
           }
         },
         "imports": [
@@ -10855,24 +10884,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "偵測到套件降級: Xamarin.Forms 從 4.7.0.1351 降到 4.5.0.495。請直接從專案參考套件，以選取不同的版本。 \r\n MasterDetailTemplate.UWP -> MasterDetailTemplate -> Xamarin.Forms (>= 4.7.0.1351) \r\n MasterDetailTemplate.UWP -> Xamarin.Forms (>= 4.5.0.495)",
-      "libraryId": "Xamarin.Forms",
-      "targetGraphs": [
-        "UAP,Version=v10.0.16299",
-        "UAP,Version=v10.0.16299/win10-arm",
-        "UAP,Version=v10.0.16299/win10-arm-aot",
-        "UAP,Version=v10.0.16299/win10-arm64-aot",
-        "UAP,Version=v10.0.16299/win10-x64",
-        "UAP,Version=v10.0.16299/win10-x64-aot",
-        "UAP,Version=v10.0.16299/win10-x86",
-        "UAP,Version=v10.0.16299/win10-x86-aot"
-      ]
-    }
-  ]
+  }
 }

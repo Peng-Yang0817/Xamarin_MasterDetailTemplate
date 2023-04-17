@@ -12,6 +12,7 @@ namespace MasterDetailTemplate
         public string UserName = "UserName";
         public string Auth001Id = "Auth001Id";
         public string AquariumUnitNum = "AquariumUnitNum";
+        public string ViewMode = "ViewMode";
         public App()
         {
             InitializeComponent();
@@ -43,6 +44,10 @@ namespace MasterDetailTemplate
             if (!Properties.ContainsKey(AquariumUnitNum))
             {
                 Properties[AquariumUnitNum] = "NULL";
+            }
+            if (!Properties.ContainsKey(ViewMode))
+            {
+                Properties[ViewMode] = "False";
             }
         }
 

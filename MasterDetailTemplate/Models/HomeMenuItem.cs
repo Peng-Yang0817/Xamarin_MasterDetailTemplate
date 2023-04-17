@@ -12,6 +12,7 @@ namespace MasterDetailTemplate.Models
         LoginAndLogout,
         AquariumWaterSituation,
         HistoricalRecordSearch,
+        BindAndEdit,
     }
     public class HomeMenuItem
     {

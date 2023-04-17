@@ -56,7 +56,7 @@ namespace MasterDetailTemplate.Views
             Appearing_RefreshView.IsEnabled = true;
             Appearing_RefreshView.IsRefreshing = true;
 
-            await Task.Delay(500);
+            await Task.Delay(300);
 
             // 設定魚缸標題
             SetAquaruimNum();
@@ -535,7 +535,7 @@ namespace MasterDetailTemplate.Views
         {
             AquaruimNum.Text = "魚缸 : " + getAquariumNum;
         }
-
+        
         /// <summary>
         /// 離開頁面時，清空魚缸標題編號的LABLE
         /// </summary>

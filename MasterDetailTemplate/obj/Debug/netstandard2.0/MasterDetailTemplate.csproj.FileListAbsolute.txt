@@ -29,3 +29,4 @@ C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetail
 C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\refint\MasterDetailTemplate.dll
 C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\MasterDetailTemplate.pdb
 C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\ref\MasterDetailTemplate.dll
+C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate\obj\Debug\netstandard2.0\Views\BindAndEditPage.xaml.g.cs

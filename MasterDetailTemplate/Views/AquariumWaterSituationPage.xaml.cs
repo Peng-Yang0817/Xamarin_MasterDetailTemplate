@@ -65,7 +65,7 @@ namespace MasterDetailTemplate.Views
 
                 StackLayout_Miain.Children.Clear();
 
-                await Task.Delay(500);
+                await Task.Delay(300);
 
                 // 按鈕能否點擊資料容器
                 Dictionary<string, bool> ButtonStaus = new Dictionary<string, bool>();
@@ -149,7 +149,7 @@ namespace MasterDetailTemplate.Views
                 Appearing_RefreshView.IsRefreshing = true;
                 StackLayout_Miain.Children.Clear();
 
-                await Task.Delay(500);
+                await Task.Delay(300);
 
                 // 按鈕能否點擊資料容器
                 Dictionary<string, bool> ButtonStaus = new Dictionary<string, bool>();

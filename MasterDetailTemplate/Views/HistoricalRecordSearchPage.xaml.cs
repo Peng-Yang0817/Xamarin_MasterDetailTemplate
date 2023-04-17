@@ -38,7 +38,7 @@ namespace MasterDetailTemplate.Views
         {
             Appearing_RefreshView.IsEnabled = true;
             Appearing_RefreshView.IsRefreshing = true;
-            await Task.Delay(800);
+            await Task.Delay(200);
 
             txtFishTankNum.Text = "";
 
@@ -56,7 +56,7 @@ namespace MasterDetailTemplate.Views
         {
             Appearing_RefreshView.IsEnabled = true;
             Appearing_RefreshView.IsRefreshing = true;
-            await Task.Delay(400);
+            await Task.Delay(200);
 
             txtFishTankNum.Text = "";
 
@@ -108,7 +108,7 @@ namespace MasterDetailTemplate.Views
                 {
                     Appearing_RefreshView.IsEnabled = true;
                     Appearing_RefreshView.IsRefreshing = true;
-                    await Task.Delay(1000);
+                    await Task.Delay(300);
 
                     // 將用戶填入的魚缸編號取出
                     Entry Entry_txtFishTankNum = (Entry)FindByName("txtFishTankNum");
@@ -117,27 +117,28 @@ namespace MasterDetailTemplate.Views
                     // 向Server抓取資料
                     List<AquaruimNumBindHistory> DataList = await GetMyChartNeedData(string_txtFishTankNum);
 
-                    // 紀錄資料長度
-                    int DataLength = DataList.Count;
-
-
-
-                    if (DataLength != 0)
+                    if (DataList != null)
                     {
-                        // 初始化一個Grid
-                        Grid grid_content = InitGridSet();
+                        // 紀錄資料長度
+                        int DataLength = DataList.Count;
 
-                        // 將抓到的資料放入Grid中
-                        for (int i = 0; i < DataLength; i++)
+                        if (DataLength != 0)
                         {
-                            ModifyGridToAddData(grid_content, i, DataList[i]);
-                        }
+                            // 初始化一個Grid
+                            Grid grid_content = InitGridSet();
 
-                        AddGridInToStackLayout(grid_content);
-                    }
-                    else
-                    {
-                        await DisplayAlert("提示", "查無該魚缸的綁定紀錄。", "確定");
+                            // 將抓到的資料放入Grid中
+                            for (int i = 0; i < DataLength; i++)
+                            {
+                                ModifyGridToAddData(grid_content, i, DataList[i]);
+                            }
+
+                            AddGridInToStackLayout(grid_content);
+                        }
+                        else
+                        {
+                            await DisplayAlert("提示", "查無該魚缸的綁定紀錄。", "確定");
+                        }
                     }
 
                     Appearing_RefreshView.IsRefreshing = false;
@@ -308,7 +309,7 @@ namespace MasterDetailTemplate.Views
             stackLayout_DataList.Children.Add(grid_content);
         }
 
-        // ========================================================================== 取得伺服器回傳水質曲線圖資料集合
+        // ========================================================================== 取得伺服器回傳魚缸綁定紀錄
         /// <summary>
         /// 取得伺服器回傳的魚缸綁定紀錄
         /// </summary>
