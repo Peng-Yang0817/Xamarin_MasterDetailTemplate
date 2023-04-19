@@ -7,7 +7,7 @@
         <RefreshView x:Name="Appearing_RefreshView" RefreshColor="#2196f3" IsEnabled="False">
             <ScrollView>
                 <StackLayout Margin="10,0,10,5">
-                    <!-- 解綁區塊 -->
+                    <!-- 解綁區塊=========================================================================== -->
                     <!-- 寫死的區塊，可以不用動 -->
                     <StackLayout Margin="10,20,10,0">
                         <Grid x:Name="Aquarium_Edit_Grid"
@@ -59,9 +59,9 @@
                         </Grid>
                     </StackLayout>
 
-                    <!-- 解綁區塊 -->
                     <!-- 塞資料的區塊!!! -->
-                    <StackLayout Margin="10,0,10,0">
+                    <StackLayout Margin="10,0,10,0"
+                                 x:Name="stackLayout_DataList">
                         <Grid ColumnSpacing="2" RowSpacing="1" Margin="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
@@ -107,7 +107,7 @@
                     </StackLayout>
 
 
-                    <!-- 綁定魚缸區塊 -->
+                    <!-- 綁定魚缸區塊=========================================================================== -->
                     <Frame BackgroundColor="#f2f2f2" BorderColor="Gray" CornerRadius="12" Margin="10">
                         <StackLayout BackgroundColor="#f2f2f2">
                             <StackLayout>
@@ -122,8 +122,7 @@
                                    Margin="0,20,0,5"/>
                             <Entry x:Name="Entry_Email"
                                     Placeholder="Email"
-                                    Margin="0,0,0,20"
-                                    MaxLength="16"/>
+                                    Margin="0,0,0,20"/>
 
                             <Label Text="使用者密碼" 
                                    FontSize="Medium"
@@ -154,7 +153,7 @@
                             <Entry x:Name="Entry_AquariumTypeId"
                                     Placeholder="選擇輸入上方介紹的對應數字即可"
                                     Margin="0,0,0,20"
-                                    MaxLength="16"/>
+                                    MaxLength="1"/>
 
                             <Button x:Name="btnSend"
                                     Text="送出"

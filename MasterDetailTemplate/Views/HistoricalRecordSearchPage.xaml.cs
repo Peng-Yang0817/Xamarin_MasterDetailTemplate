@@ -68,7 +68,7 @@ namespace MasterDetailTemplate.Views
         }
 
         /// <summary>
-        /// 看文字長度更變厚，是否要更換顏色
+        /// 看文字長度更變後，是否要更換顏色
         /// </summary>
         private void TxtFishTankNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
