@@ -62,6 +62,7 @@
                     <!-- 塞資料的區塊!!! -->
                     <StackLayout Margin="10,0,10,0"
                                  x:Name="stackLayout_DataList">
+                        <!-- 
                         <Grid ColumnSpacing="2" RowSpacing="1" Margin="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
@@ -104,6 +105,7 @@
                             
                             
                         </Grid>
+                    -->
                     </StackLayout>
 
 
