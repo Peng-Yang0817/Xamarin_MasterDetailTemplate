@@ -51,6 +51,9 @@ namespace MasterDetailTemplate.Views
                     case (int)MenuItemType.BindAndEdit: // HistoricalRecordSearchPage
                         MenuPages.Add(id, new NavigationPage(new BindAndEditPage()));
                         break;
+                    case (int)MenuItemType.NotifyRangeSet: // HistoricalRecordSearchPage
+                        MenuPages.Add(id, new NavigationPage(new NotifyRangeSetPage()));
+                        break;
                 }
             }
 

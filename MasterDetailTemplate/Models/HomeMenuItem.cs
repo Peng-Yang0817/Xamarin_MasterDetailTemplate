@@ -13,6 +13,7 @@ namespace MasterDetailTemplate.Models
         AquariumWaterSituation,
         HistoricalRecordSearch,
         BindAndEdit,
+        NotifyRangeSet,
     }
     public class HomeMenuItem
     {

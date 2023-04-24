@@ -31,6 +31,7 @@ namespace MasterDetailTemplate.Views
                     new HomeMenuItem {Id = MenuItemType.AquariumWaterSituation, Title="魚缸水質狀況" },
                     new HomeMenuItem {Id = MenuItemType.HistoricalRecordSearch, Title="綁定記錄查詢" },
                     new HomeMenuItem {Id = MenuItemType.BindAndEdit, Title="綁定與編輯" },
+                    new HomeMenuItem {Id = MenuItemType.NotifyRangeSet, Title="通報設置" },
                 };
 
 

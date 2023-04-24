@@ -37,6 +37,7 @@ namespace MasterDetailTemplate.Services
         public const string AboutPage = nameof(Views.AboutPage);
         public const string DetailPage = nameof(Views.DetailPage);
         public const string ChartViewPage = nameof(Views.ChartViewPage);
+        public const string NotifyRangeSetDetailPage = nameof(Views.NotifyRangeSetDetailPage);
 
         /// <summary>
         /// 頁面鍵- 頁面類型字典
@@ -45,7 +46,8 @@ namespace MasterDetailTemplate.Services
             new Dictionary<string, Type> {
                 { AboutPage,typeof(AboutPage) },
                 { DetailPage,typeof(DetailPage) },
-                { ChartViewPage,typeof(ChartViewPage) }
+                { ChartViewPage,typeof(ChartViewPage) },
+                { NotifyRangeSetDetailPage,typeof(NotifyRangeSetDetailPage) }
             };
     }
 }
