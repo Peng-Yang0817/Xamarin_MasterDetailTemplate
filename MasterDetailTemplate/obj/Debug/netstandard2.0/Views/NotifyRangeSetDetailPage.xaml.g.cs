@@ -53,6 +53,9 @@ namespace MasterDetailTemplate.Views {
         private global::Xamarin.Forms.Entry Entry_TdsLowerBound;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button SendButton;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(NotifyRangeSetDetailPage));
             Appearing_RefreshView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.RefreshView>(this, "Appearing_RefreshView");
@@ -67,6 +70,7 @@ namespace MasterDetailTemplate.Views {
             Entry_PhLowerBound = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "Entry_PhLowerBound");
             Entry_TdsUppderBound = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "Entry_TdsUppderBound");
             Entry_TdsLowerBound = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "Entry_TdsLowerBound");
+            SendButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "SendButton");
         }
     }
 }

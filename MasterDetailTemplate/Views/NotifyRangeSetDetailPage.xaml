@@ -11,11 +11,11 @@
                     <!-- 寫死的區塊，可以不用動 -->
                     <StackLayout Margin="10,20,10,0">
                         <Grid x:Name="Aquarium_Edit_Grid"
-                              ColumnSpacing="0" RowSpacing="0" Margin="0">
+                              ColumnSpacing="0" RowSpacing="1" Margin="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -311,9 +311,11 @@
                                         Style="{x:StaticResource Table_Content_Style}"
                                          BackgroundColor="#fafafa">
                                 <StackLayout VerticalOptions="Start" Orientation="Horizontal" Padding="0">
-                                    <Button Text="送出" TextColor="White" FontSize="16" 
-                                            HorizontalOptions="StartAndExpand" Margin="0,0,0,10"
-                                            WidthRequest="68" HeightRequest="40" BackgroundColor="#48830e" 
+                                    <Button x:Name="SendButton" 
+                                            Clicked="Button_SendQualityNotifyRange_Clicked"
+                                            Text="送出" TextColor="White" FontSize="16" 
+                                            HorizontalOptions="FillAndExpand" Margin="0,0,0,10"
+                                            HeightRequest="50" BackgroundColor="#48830e" 
                                             CornerRadius="10"></Button>
                                 </StackLayout>
                             </StackLayout>
@@ -322,11 +324,13 @@
                     <!-- 
                         因為ScrollView沒辦法滾動，應該是沒被觸發到可以向下滾的範圍，
                         造成按鈕顯示不出來，因此添加一個空白的區塊，強制觸發能滾動的機制 
-                    -->
-                    <StackLayout HorizontalOptions="Start"
-                                 WidthRequest="50" HeightRequest="32" 
-                                 BackgroundColor="#fafafa">
+                    
+                    <StackLayout Margin="0,10,0,0"
+                                 HorizontalOptions="Start"
+                                 WidthRequest="50" HeightRequest="16" 
+                                 BackgroundColor="#fafafa"> 
                     </StackLayout>
+                    -->
                 </StackLayout>
             </ScrollView>
 

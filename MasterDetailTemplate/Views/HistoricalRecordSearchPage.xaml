@@ -11,9 +11,11 @@
                     <Frame BackgroundColor="#ffe6dc" BorderColor="Gray" CornerRadius="8" Margin="10">
                         <StackLayout BackgroundColor="#ffe6dc">
                             <Label Text="輸入查詢的魚缸編號(16字符)" 
-                           FontSize="Large"
-                           HorizontalOptions="Center"
-                           Margin="0,40,0,30"/>
+                                   FontAttributes="Bold"
+                                   TextColor="#3d3d3d"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"
+                                   Margin="0,40,0,30"/>
 
                             <Entry x:Name="txtFishTankNum"
                             Placeholder="魚缸編號"
