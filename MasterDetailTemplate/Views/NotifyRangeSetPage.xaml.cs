@@ -128,6 +128,23 @@ namespace MasterDetailTemplate.Views
             return false;
         }
 
+        /// <summary>
+        /// 測試連結瀏覽器
+        /// </summary>
+        public async void Button_OpenBrowser_Clicked(object sender, EventArgs e)
+        {
+            string uri = server.ServerIP;
+            uri += "/MobileService/BindLineNotifyNeedLogInFirst";
+
+            await Browser.OpenAsync(uri, new BrowserLaunchOptions
+            {
+                LaunchMode = BrowserLaunchMode.SystemPreferred,
+                TitleMode = BrowserTitleMode.Show,
+                PreferredToolbarColor = Color.AliceBlue,
+                PreferredControlColor = Color.Violet
+            });
+        }
+
         // ========================================================================== 自定義模板
         /// <summary>
         /// 初始化要放資料的Grid

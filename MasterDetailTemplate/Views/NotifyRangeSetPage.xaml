@@ -27,6 +27,20 @@
 
                             <!-- 上方是寫死的區塊，可以不用動 -->
                             <StackLayout Grid.Row="0"
+                                        Grid.Column="2"
+                                         Grid.ColumnSpan="2"
+                                        Style="{x:StaticResource Table_Content_Style}"
+                                         BackgroundColor="#fafafa">
+                                <StackLayout VerticalOptions="Start" Orientation="Horizontal" Padding="0">
+                                    <Button Clicked="Button_OpenBrowser_Clicked"
+                                            Text="Line 連動設置" TextColor="White" FontSize="12" 
+                                            HorizontalOptions="FillAndExpand" Margin="0,0,0,0"
+                                            BackgroundColor="#449d44" HeightRequest="40"
+                                            CornerRadius="10"></Button>
+                                </StackLayout>
+                            </StackLayout>
+                            
+                            <StackLayout Grid.Row="1"
                                          Grid.Column="0"
                                          Style="{x:StaticResource Table_Title_Style}">
                                 <StackLayout VerticalOptions="CenterAndExpand">
@@ -35,7 +49,7 @@
                                        VerticalTextAlignment="Center"/>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Grid.Row="0"
+                            <StackLayout Grid.Row="1"
                                          Grid.Column="1"
                                          Style="{x:StaticResource Table_Title_Style}">
                                 <StackLayout VerticalOptions="CenterAndExpand">
@@ -44,7 +58,7 @@
                                        VerticalTextAlignment="Center"/>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Grid.Row="0"
+                            <StackLayout Grid.Row="1"
                                          Grid.Column="2"
                                          Style="{x:StaticResource Table_Title_Style}">
                                 <StackLayout VerticalOptions="CenterAndExpand">
@@ -53,7 +67,7 @@
                                        VerticalTextAlignment="Center"/>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Grid.Row="0"
+                            <StackLayout Grid.Row="1"
                                          Grid.Column="3"
                                          Style="{x:StaticResource Table_Title_Style}">
                                 <StackLayout VerticalOptions="CenterAndExpand">
