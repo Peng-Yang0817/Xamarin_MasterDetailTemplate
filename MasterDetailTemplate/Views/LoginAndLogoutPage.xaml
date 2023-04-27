@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterDetailTemplate.Views.LoginAndLogoutPage"
              Title="用戶介面">
+
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                
                 <StackLayout x:Name="StackLayout_UserLoginFirst">
                     <Frame BackgroundColor="White" BorderColor="Gray" CornerRadius="8" Margin="20">
                         <StackLayout VerticalOptions="CenterAndExpand" Padding="30, 30, 30, 0">
@@ -41,15 +42,18 @@
                         <StackLayout>
                             <StackLayout Orientation="Horizontal"
                                          HorizontalOptions="Center">
+                                
+                                <Label Text="用戶 : "
+                                       FontSize="24" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="CenterAndExpand" />
+                                
                                 <Label x:Name="label_UserName"
                                        Text=""
                                        FontSize="24"
                                        HorizontalOptions="Center" 
                                        VerticalOptions="CenterAndExpand"/>
-                                <Label Text="帳戶登出"
-                                       FontSize="24" 
-                                       HorizontalOptions="Center" 
-                                       VerticalOptions="CenterAndExpand" />
+                                
                             </StackLayout>
                             <Button Text="登出" Clicked="Button_Logout_Clicked" Margin="0, 20, 0, 0" />
                         </StackLayout>

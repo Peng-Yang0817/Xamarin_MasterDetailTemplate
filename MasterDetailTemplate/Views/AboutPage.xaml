@@ -11,7 +11,11 @@
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="UserName_LogInState" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#6dbfff</Color>
@@ -52,17 +56,17 @@
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="End"
                              Margin="0,800,0,0">
-                    
+                    <!-- TODO -->
                     <Label Text="預覽模式" 
                            FontSize="26"
                            VerticalOptions="Center"/>
-                    
                     <Switch x:Name="switch_ViewMode"
                             Toggled="switch_ViewMode_Tapped"
                             Grid.Row="5"
                             Grid.Column="1"
                             VerticalOptions="Center"
                             WidthRequest="50"/>
+                    
                 </StackLayout>
                 
             </StackLayout>

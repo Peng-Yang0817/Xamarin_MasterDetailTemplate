@@ -545,3 +545,8 @@ C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetail
 C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\res\mipmap-hdpi\fish_icon.png
+C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\res\mipmap-mdpi\fish_icon.png
+C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\res\mipmap-xhdpi\fish_icon.png
+C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\res\mipmap-xxhdpi\fish_icon.png
+C:\Codding\開發水質管控\APP\0412\Xamarin_MasterDetailTemplate\MasterDetailTemplate.Android\obj\Debug\90\res\mipmap-xxxhdpi\fish_icon.png

@@ -6,8 +6,8 @@
              mc:Ignorable="d"
              x:Class="MasterDetailTemplate.Views.MenuPage"
              Title="Menu">
-             
-    <StackLayout VerticalOptions="FillAndExpand">
+
+    <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="#fafafa">
         <ListView x:Name="ListViewMenu"
                     HasUnevenRows="True">
             <d:ListView.ItemsSource>

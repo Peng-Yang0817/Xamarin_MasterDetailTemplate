@@ -46,6 +46,8 @@ namespace MasterDetailTemplate.Views
             }
         }
 
+
+
         /// <summary>
         /// 用戶登出功能
         /// </summary>
@@ -132,12 +134,14 @@ namespace MasterDetailTemplate.Views
                 app.Properties[Auth001Id] = returnMsg.Auth001Id;
                 await app.SavePropertiesAsync();
 
-                await DisplayAlert("已經登入",
-                       "登入了! 可以開始進行其餘操作。",
-                       "OK");
                 label_UserName.Text = LoginUser;
                 StackLayout_UserLoginFirst.IsVisible = false;
                 StackLayout_UserCanLogoutNow.IsVisible = true;
+
+                await DisplayAlert("已經登入",
+                       "登入了! 可以開始進行其餘操作。",
+                       "OK");
+                
 
                 // 登入後重置當前輸入框
                 entry_Password.Text = "";
