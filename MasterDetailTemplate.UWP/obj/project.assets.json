@@ -667,6 +667,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -748,6 +759,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -1459,6 +1471,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -1529,6 +1552,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -2241,6 +2265,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -2311,6 +2346,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -2847,6 +2883,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -2914,6 +2961,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -3625,6 +3673,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -3695,6 +3754,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -4407,6 +4467,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -4477,6 +4548,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -5188,6 +5260,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -5258,6 +5341,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -5970,6 +6054,17 @@
           "lib/uap10.0.16299/_._": {}
         }
       },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
+          "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
       "Win2D.uwp/1.20.0": {
         "type": "package",
         "compile": {
@@ -6040,6 +6135,7 @@
           "Microcharts.Forms": "0.9.5.9",
           "MvvmLightLibs": "5.4.1.1",
           "Newtonsoft.Json": "12.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.7.0.1351",
           "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2",
@@ -10382,6 +10478,30 @@
         "system.valuetuple.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Toasts.Forms.Plugin/3.3.2": {
+      "sha512": "Cg+uc+GPV2rfGLYl/gyW7oo5YPPZ0/jG1Bj6KRihecoOy0Ju4HfKith9pd8CIXerS9DH7x8vqV5jrPaKXEGenA==",
+      "type": "package",
+      "path": "toasts.forms.plugin/3.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Toasts.Forms.Plugin.Abstractions.dll",
+        "lib/MonoAndroid10/Toasts.Forms.Plugin.Abstractions.pdb",
+        "lib/MonoAndroid10/Toasts.Forms.Plugin.Droid.dll",
+        "lib/MonoAndroid10/Toasts.Forms.Plugin.Droid.pdb",
+        "lib/Xamarin.iOS10/Toasts.Forms.Plugin.Abstractions.dll",
+        "lib/Xamarin.iOS10/Toasts.Forms.Plugin.Abstractions.pdb",
+        "lib/Xamarin.iOS10/Toasts.Forms.Plugin.iOS.dll",
+        "lib/netstandard1.1/Toasts.Forms.Plugin.Abstractions.dll",
+        "lib/netstandard1.1/Toasts.Forms.Plugin.Abstractions.pdb",
+        "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll",
+        "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.pdb",
+        "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll",
+        "lib/uap10.0/Toasts.Forms.Plugin.UWP.pdb",
+        "toasts.forms.plugin.3.3.2.nupkg.sha512",
+        "toasts.forms.plugin.nuspec"
       ]
     },
     "Win2D.uwp/1.20.0": {

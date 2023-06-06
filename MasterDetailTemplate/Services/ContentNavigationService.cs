@@ -49,6 +49,16 @@ namespace MasterDetailTemplate.Services
         }
 
         /// <summary>
+        /// 移除最上層 Navigate
+        /// </summary>
+        /// <param name="pageKey">頁面鍵</param>
+        public async Task PopNavigateAsync()
+        {
+            // 透過MainPage的Detail進行 Navigate 頁面移除! 
+            await MainPage.Detail.Navigation.PopAsync();
+        }
+
+        /// <summary>
         /// 導航到頁面
         /// </summary>
         /// <param name="pagekey">頁面鍵</param>

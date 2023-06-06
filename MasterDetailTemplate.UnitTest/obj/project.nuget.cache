@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YOGmSN21P8U4Pke4uKmOmh5XqDRHSWihEV7GGtIE6DK/bVPxrgu2v7CQ/b9pxmtg2pzJQrJWt+Qm2DVF2AqgLQ==",
+  "dgSpecHash": "b3lk/l8f5hEzPxnLCSOx9mpGqqP0TtgSzB0iypGKUzHz1QqQw7LS0tIY5716ODa/7x8Q+JRjEdUlPqmsM52nMQ==",
   "success": true,
   "projectFilePath": "C:\\Codding\\開發水質管控\\APP\\0412\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.UnitTest\\MasterDetailTemplate.UnitTest.csproj",
   "expectedPackageFiles": [
@@ -135,6 +135,7 @@
     "C:\\Users\\tcher\\.nuget\\packages\\system.xml.xmldocument\\4.0.1\\system.xml.xmldocument.4.0.1.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512",
+    "C:\\Users\\tcher\\.nuget\\packages\\toasts.forms.plugin\\3.3.2\\toasts.forms.plugin.3.3.2.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\xamarin.forms\\4.7.0.1351\\xamarin.forms.4.7.0.1351.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\xamarin.forms.extended.infinitescrolling\\1.0.0-preview2\\xamarin.forms.extended.infinitescrolling.1.0.0-preview2.nupkg.sha512"

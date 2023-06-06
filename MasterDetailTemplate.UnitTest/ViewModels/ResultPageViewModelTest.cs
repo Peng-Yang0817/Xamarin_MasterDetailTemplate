@@ -102,7 +102,35 @@ namespace MasterDetailTemplate.UnitTest.ViewModels
                 new ResultPageViewModel(null, mockContentNavigationService);
             await resultPageViewModel.PoetryTappedCommmandFunction(poetryToTap);
 
-            contentNavigationServiceMock.Verify(p => p.NavigateToAsync(ContentNavigationConstants.DetailPage, poetryToTap),Times.Once);
+            contentNavigationServiceMock.Verify(p => p.NavigateToAsync(ContentNavigationConstants.DetailPage, poetryToTap), Times.Once);
+        }
+
+        [Test]
+        public  void TestLoopRemoveListItem()
+        {
+            List<string> strings = new List<string>
+            {
+                "AA",
+                "BB",
+                "CC"
+            };
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (strings[i] == "BB")
+                {
+                    strings[i] = "8787";
+                }
+            }
+            Console.WriteLine(strings);
+            GGDa(strings);
+            int Xi = 0;
+        }
+
+        public static void GGDa(List<string> strings_1) 
+        {
+            strings_1.Remove(strings_1[1]);
+            Console.WriteLine(strings_1);
         }
     }
 }

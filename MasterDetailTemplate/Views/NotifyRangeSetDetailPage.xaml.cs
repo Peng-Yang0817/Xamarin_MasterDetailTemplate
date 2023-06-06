@@ -14,6 +14,10 @@ using System.Threading;
 using Newtonsoft.Json;
 
 using Xamarin.Essentials;
+using MasterDetailTemplate.Services;
+
+using Plugin.Toasts;
+using Android;
 
 namespace MasterDetailTemplate.Views
 {
@@ -25,6 +29,12 @@ namespace MasterDetailTemplate.Views
         public string AquariumUnitNum = "AquariumUnitNum";
 
         private serverAccessSet server = new serverAccessSet();
+
+        // 準備轉跳頁面所需的物件
+        private static ContentPageActivationService ContentPageActivationService =
+            new ContentPageActivationService();
+        private static ContentNavigationService ContentNavigationService =
+            new ContentNavigationService(ContentPageActivationService);
 
         public NotifyRangeSetDetailPage()
         {
@@ -252,7 +262,9 @@ namespace MasterDetailTemplate.Views
                 double.TryParse(valueText_WaterLowerBound, out waterLevelLowerBound) &&
                 waterLevel.ContainsKey(valueText_WaterLowerBound))
             {
-
+                Appearing_RefreshView.IsEnabled = true;
+                Appearing_RefreshView.IsRefreshing = true;
+                SendButton.IsEnabled = false;
 
                 // 打包要傳送的資料
                 NotifySetRange data = new NotifySetRange
@@ -286,11 +298,16 @@ namespace MasterDetailTemplate.Views
                 {
                     if (returnMsg.Status)
                     {
-                        await DisplayAlert("完成", returnMsg.Message.ToString(), "確定");
-                        OnAppearing();
+                        HttpRequestResult_Toast("完成", returnMsg.Message.ToString(), true);
+                        // await DisplayAlert("完成", returnMsg.Message.ToString(), "確定");
+                        await ContentNavigationService.PopNavigateAsync();
                     }
                     else
                     {
+                        // HttpRequestResult_Toast("錯誤", returnMsg.Message.ToString(), false);
+                        Appearing_RefreshView.IsRefreshing = false;
+                        Appearing_RefreshView.IsEnabled = false;
+                        SendButton.IsEnabled = true;
                         await DisplayAlert("錯誤", returnMsg.Message.ToString(), "確定");
                     }
                 }
@@ -381,7 +398,51 @@ namespace MasterDetailTemplate.Views
             Lable_AquariumNum.Text = "魚缸編號 : ";
         }
 
+        /// <summary>
+        /// 自定義 Toast 的提示視窗邏輯與樣式
+        /// </summary>
+        /// <param name="title">標題</param>
+        /// <param name="msg">內容</param>
+        /// <param name="IsValid">請求是否成功</param>
+        public async void HttpRequestResult_Toast(string title, string msg, bool IsValid)
+        {
+            var notificator = DependencyService.Get<IToastNotificator>(); // 取得 ToastNotificator 的實例
 
+            // 決定通知的區域背景顏色
+            AndroidOptions result_AndroidOptions = new AndroidOptions()
+            {
+                HexColor = "#bd2c38", // Android 上通知的顏色
+                ForceOpenAppOnNotificationTap = true, // 點擊通知時是否強制打開應用程式
+            };
+
+            if (IsValid)
+            {
+                result_AndroidOptions = new AndroidOptions()
+                {
+                    HexColor = "#fae69e", // Android 上通知的顏色
+                    ForceOpenAppOnNotificationTap = true, // 點擊通知時是否強制打開應用程式
+                };
+            }
+
+            var options = new NotificationOptions()
+            {
+                Title = title, // 通知的標題
+                Description = msg, // 通知的描述
+                IsClickable = true, // 設置通知是否可點擊，若設為 false 則不可點擊
+
+                AndroidOptions = result_AndroidOptions,
+
+                // DelayUntil = DateTime.Now.AddSeconds(5)
+                // DelayUntil = DateTime.Now.AddSeconds(1) // 設置通知延遲顯示的時間
+            };
+
+            var result = await notificator.Notify(options);
+
+            if (result.Action == NotificationAction.Clicked)
+            {
+                await App.Current.MainPage.DisplayAlert(title, msg, "Ok");
+            }
+        }
         /// <summary>
         /// 返回當前欲設置的魚缸編號
         /// </summary>
