@@ -244,8 +244,19 @@ namespace MasterDetailTemplate.Views
             Xamarin.Forms.Grid.SetRow(stackLayout_dataTime_title, 0);
             Xamarin.Forms.Grid.SetColumn(stackLayout_dataTime_title, 0);
 
-            DateTime DataDate = item.createTime;
-            string DataDate_string = DataDate.ToString("yy/MM/dd-HH:mm");
+            DateTime DataDate = new DateTime();
+            string DataDate_string = "";
+            if (item.WaterType == "")
+            {
+                DataDate_string = "";
+            }
+            else 
+            {
+                DataDate = item.createTime;
+                DataDate_string = DataDate.ToString("yy/MM/dd-HH:mm");
+            }
+
+           
 
             var stackLayout_dataTime_value = new StackLayout
             {

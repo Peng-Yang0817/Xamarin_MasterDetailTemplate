@@ -95,6 +95,15 @@ namespace MasterDetailTemplate.Views
         }
 
         /// <summary>
+        /// 密碼顯示的按鈕Toggle
+        /// </summary>
+        private void PasswordShowButton_Clicked(object sender, EventArgs e)
+        {
+            Entry entry_Password = Entry_Password as Entry;
+            Entry_Password.IsPassword = !Entry_Password.IsPassword;
+        }
+
+        /// <summary>
         /// 送出按鈕被點擊後
         /// </summary>
         /// <param name="sender"></param>
