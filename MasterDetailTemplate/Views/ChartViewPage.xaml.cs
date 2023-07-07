@@ -26,6 +26,8 @@ namespace MasterDetailTemplate.Views
         public App app = Application.Current as App;
         public string AquariumUnitNum = "AquariumUnitNum";
         public string Auth001Id = "Auth001Id";
+        static private bool isInit = true;
+        static private string DataCount = "6";
 
         private serverAccessSet server = new serverAccessSet();
 
@@ -56,13 +58,19 @@ namespace MasterDetailTemplate.Views
             Appearing_RefreshView.IsEnabled = true;
             Appearing_RefreshView.IsRefreshing = true;
 
+            if (isInit)
+            {
+                DataCountPicker.SelectedIndex = 0;
+                isInit = false;
+            }
+
             await Task.Delay(300);
 
             // 設定魚缸標題
             SetAquaruimNum();
 
             // 取得圖表所需資料
-            List<AquariumSituationMotify> DataList = await GetMyChartNeedData();
+            List<AquariumSituationMotify> DataList = await GetMyChartNeedData(DataCount);
 
             // 定義時間與各基準的集合
             List<string> DateTiemString = new List<string>();
@@ -129,6 +137,10 @@ namespace MasterDetailTemplate.Views
             // 清空水位高度的曲線圖的StackLayout
             StackLatout_WaterLevel.Children.Clear();
 
+            // 賦歸資料筆數的選擇方式
+            DataCount = "6";
+            isInit = true;
+
             await Task.Delay(100);
         }
         // ========================================================================== 塞資料區塊
@@ -136,8 +148,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定溫度圖表
         /// </summary>
-        /// <param name="DateTimeString">時間label(6個)</param>
-        /// <param name="DataString">溫度集合(6個)</param>
+        /// <param name="DateTimeString">時間label</param>
+        /// <param name="DataString">溫度集合</param>
         public void SetTemperatureChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空溫度的曲線圖的StackLayout
@@ -151,7 +163,7 @@ namespace MasterDetailTemplate.Views
             // 測試用的溫度狀態List<ChartEntry>
             List<ChartEntry> entries_Temperature = new List<ChartEntry>();
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < DataString.Count; i++)
             {
                 entries_Temperature.Add(
                     new ChartEntry(float.Parse(DataString[i]))
@@ -179,8 +191,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定濁度圖表
         /// </summary>
-        /// <param name="DateTimeString">時間label(6個)</param>
-        /// <param name="DataString">濁度集合(6個)</param>
+        /// <param name="DateTimeString">時間label</param>
+        /// <param name="DataString">濁度集合</param>
         public void SetTurbidityChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
@@ -193,7 +205,7 @@ namespace MasterDetailTemplate.Views
 
             // 測試用的濁度狀態List<ChartEntry>
             List<ChartEntry> entries_Turbidity = new List<ChartEntry>();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < DataString.Count; i++)
             {
                 entries_Turbidity.Add(
                     new ChartEntry(float.Parse(DataString[i]))
@@ -222,8 +234,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定PH圖表
         /// </summary>
-        /// <param name="DateTimeString">時間label(6個)</param>
-        /// <param name="DataString">PH集合(6個)</param>
+        /// <param name="DateTimeString">時間label</param>
+        /// <param name="DataString">PH集合</param>
         public void SetPHChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
@@ -237,7 +249,7 @@ namespace MasterDetailTemplate.Views
             // 測試用的PH狀態List<ChartEntry>
             List<ChartEntry> entries_PH = new List<ChartEntry>();
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < DataString.Count; i++)
             {
                 entries_PH.Add(
                     new ChartEntry(float.Parse(DataString[i]))
@@ -267,8 +279,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定TDS圖表
         /// </summary>
-        /// <param name="DateTimeString">時間label(6個)</param>
-        /// <param name="DataString">TDS集合(6個)</param>
+        /// <param name="DateTimeString">時間label</param>
+        /// <param name="DataString">TDS集合</param>
         public void SetTDSChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
@@ -281,7 +293,7 @@ namespace MasterDetailTemplate.Views
 
             // 測試用的PH狀態List<ChartEntry>
             List<ChartEntry> entries_TDS = new List<ChartEntry>();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < DataString.Count; i++)
             {
                 entries_TDS.Add(
                     new ChartEntry(float.Parse(DataString[i]))
@@ -310,8 +322,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 設定水位高度圖表
         /// </summary>
-        /// <param name="DateTimeString">時間label(6個)</param>
-        /// <param name="DataString">水位高度集合(6個)</param>
+        /// <param name="DateTimeString">時間label</param>
+        /// <param name="DataString">水位高度集合</param>
         public void SetWaterLevelChart(List<string> DateTimeString, List<string> DataString)
         {
             // 清空濁度的曲線圖的StackLayout
@@ -324,7 +336,7 @@ namespace MasterDetailTemplate.Views
 
             // 測試用的PH狀態List<ChartEntry>
             List<ChartEntry> entries_WaterLevel = new List<ChartEntry>();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < DataString.Count; i++)
             {
                 entries_WaterLevel.Add(
                     new ChartEntry(float.Parse(DataString[i]))
@@ -357,7 +369,7 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 取得伺服器回傳水質曲線圖資料集合
         /// </summary>
-        public async Task<List<AquariumSituationMotify>> GetMyChartNeedData()
+        public async Task<List<AquariumSituationMotify>> GetMyChartNeedData(string queryitemCount)
         {
             // 準備裝曲線圖的資料集合
             List<AquariumSituationMotify> DataList = new List<AquariumSituationMotify>();
@@ -373,6 +385,7 @@ namespace MasterDetailTemplate.Views
 
                 // 準備魚缸編號，用於查詢
                 dataSendUse["AquariumNum"] = getAquariumNum;
+                dataSendUse["queryitemCount"] = queryitemCount.ToString();
 
                 // 使用 CancellationTokenSource 取消等待
                 var cts = new CancellationTokenSource();
@@ -425,6 +438,18 @@ namespace MasterDetailTemplate.Views
         }
 
         /// <summary>
+        /// 資料筆數下拉式選單__被操作後後。
+        /// </summary>
+        private void DataCountPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 取得選擇的資料筆數
+            var selectedValue = DataCountPicker.SelectedItem as string;
+            DataCount = selectedValue;
+            OnAppearing();
+        }
+
+
+        /// <summary>
         /// 定義 ChartView 模板
         /// </summary>
         public ChartView GetChartViewTemp()
@@ -432,7 +457,7 @@ namespace MasterDetailTemplate.Views
             return new ChartView
             {
                 HeightRequest = 250,
-                WidthRequest = 800,
+                WidthRequest = Convert.ToInt32(DataCount) *(double)800/6,
                 HorizontalOptions = LayoutOptions.StartAndExpand
             };
         }

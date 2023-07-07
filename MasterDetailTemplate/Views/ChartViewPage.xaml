@@ -12,7 +12,35 @@
 
                         <!-- TOD_區塊設計，之後要用C#的方式將其塞到ScrollView_Main當中 -->
                         <StackLayout Margin="5,5">
-                            <Label x:Name="AquaruimNum" FontSize="25" TextColor="Black"/>
+                            <Label x:Name="AquaruimNum" FontSize="24" TextColor="Black"/>
+
+                            <StackLayout Orientation="Horizontal" Margin="10">
+                                <Label Text="顯示過去" FontSize="20" TextColor="Black"/>
+                                <Grid WidthRequest="96">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Picker x:Name="DataCountPicker"
+                                            SelectedIndexChanged="DataCountPicker_SelectedIndexChanged"
+                                            VerticalOptions="Start"
+                                            HeightRequest="39"
+                                            >
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>6</x:String>
+                                                <x:String>12</x:String>
+                                                <x:String>18</x:String>
+                                                <x:String>24</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+
+                                    <Label Grid.Column="1" Text="筆資料" FontSize="20" TextColor="Black"/>
+                                </Grid>
+                            </StackLayout>
+
                             <StackLayout Margin="10,5">
                                 <Grid ColumnSpacing="2" RowSpacing="1">
                                     <Grid.ColumnDefinitions>
