@@ -61,7 +61,7 @@ namespace MasterDetailTemplate.Views
             if (isInit)
             {
                 DataCountPicker.SelectedIndex = 0;
-                isInit = false;
+                
             }
 
             await Task.Delay(300);
@@ -72,6 +72,12 @@ namespace MasterDetailTemplate.Views
             // 取得圖表所需資料
             List<AquariumSituationMotify> DataList = await GetMyChartNeedData(DataCount);
 
+            if (DataList.Count < Convert.ToInt32(DataCount) && !isInit)
+            {
+                await DisplayAlert("提醒", "資料筆數小於請求量!", "OK");
+                DataCount = DataList.Count.ToString();
+            }
+            isInit = false;
             // 定義時間與各基準的集合
             List<string> DateTiemString = new List<string>();
             List<string> DataString_temperature = new List<string>();
@@ -426,7 +432,8 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 全部把圖表的Scroll拉到最右邊
         /// </summary>
-        public async Task ChartScollToRight() {
+        public async Task ChartScollToRight()
+        {
 
             var scrollView = FindByName("ScrollView_Temperature") as ScrollView;
 
@@ -457,7 +464,7 @@ namespace MasterDetailTemplate.Views
             return new ChartView
             {
                 HeightRequest = 250,
-                WidthRequest = Convert.ToInt32(DataCount) *(double)800/6,
+                WidthRequest = Convert.ToInt32(DataCount) * (double)800 / 6,
                 HorizontalOptions = LayoutOptions.StartAndExpand
             };
         }
@@ -560,7 +567,7 @@ namespace MasterDetailTemplate.Views
         {
             AquaruimNum.Text = "魚缸 : " + getAquariumNum;
         }
-        
+
         /// <summary>
         /// 離開頁面時，清空魚缸標題編號的LABLE
         /// </summary>

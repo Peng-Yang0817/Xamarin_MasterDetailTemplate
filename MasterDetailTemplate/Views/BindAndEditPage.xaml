@@ -167,18 +167,29 @@
                                     Margin="0,0,0,20"
                                     MaxLength="16"/>
 
-                            <Label Text="飼養類型" 
+                            <Label Text="水質類型" 
                                    FontSize="Medium"
                                    HorizontalOptions="Start"
                                    Margin="0,20,0,0"/>
-                            <Label Text="   弱酸:1 、 中性:2 、 若鹼:3 、 海水:4" 
+                            <Label Text="   飼養的水質環境" 
                                    FontSize="16"
                                    HorizontalOptions="Start"
                                    Margin="0,0,0,5"/>
-                            <Entry x:Name="Entry_AquariumTypeId"
+                            <!--<Entry x:Name="Entry_AquariumTypeId"
                                     Placeholder="選擇輸入上方介紹的對應數字即可"
                                     Margin="0,0,0,20"
-                                    MaxLength="1"/>
+                                    MaxLength="1"/>-->
+                            <Picker x:Name="Select_AquariumTypeId"
+                                            SelectedIndexChanged="Select_AquariumTypeId_SelectedIndexChanged"
+                                            VerticalOptions="Start">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>中性</x:String>
+                                        <x:String>弱酸</x:String>
+                                        <x:String>弱鹼</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
 
                             <Button x:Name="btnSend"
                                     Text="送出"

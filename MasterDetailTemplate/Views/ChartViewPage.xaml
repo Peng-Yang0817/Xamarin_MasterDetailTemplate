@@ -16,7 +16,7 @@
 
                             <StackLayout Orientation="Horizontal" Margin="10">
                                 <Label Text="顯示過去" FontSize="20" TextColor="Black"/>
-                                <Grid WidthRequest="96">
+                                <Grid WidthRequest="120">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
@@ -24,9 +24,7 @@
 
                                     <Picker x:Name="DataCountPicker"
                                             SelectedIndexChanged="DataCountPicker_SelectedIndexChanged"
-                                            VerticalOptions="Start"
-                                            HeightRequest="39"
-                                            >
+                                            VerticalOptions="Start">
                                         <Picker.ItemsSource>
                                             <x:Array Type="{x:Type x:String}">
                                                 <x:String>6</x:String>

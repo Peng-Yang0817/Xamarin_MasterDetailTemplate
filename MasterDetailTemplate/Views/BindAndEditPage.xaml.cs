@@ -23,12 +23,20 @@ namespace MasterDetailTemplate.Views
         public App app = Application.Current as App;
         public string Auth001Id = "Auth001Id";
         public string AquariumUnitNum = "AquariumUnitNum";
+        static private int WaterType_Select = 2;
+
+        public static Dictionary<string, int> WaterTypeStringToInt = new Dictionary<string, int>();
+
 
         private serverAccessSet server = new serverAccessSet();
 
         public BindAndEditPage()
         {
             InitializeComponent();
+
+            WaterTypeStringToInt.Add("中性", 2);
+            WaterTypeStringToInt.Add("弱酸", 1);
+            WaterTypeStringToInt.Add("弱鹼", 3);
         }
 
         /// <summary>
@@ -48,7 +56,7 @@ namespace MasterDetailTemplate.Views
                 Appearing_RefreshView.IsEnabled = true;
                 Appearing_RefreshView.IsRefreshing = true;
                 await Task.Delay(300);
-
+                Select_AquariumTypeId.SelectedIndex = 0;
                 // 取的該用戶所擁有的魚缸資料
                 List<AquaruimSituation> DataList = await GetMyAquaruimSituationsData();
 
@@ -90,8 +98,8 @@ namespace MasterDetailTemplate.Views
             Entry Entry_AquaruimNum = (Entry)FindByName("Entry_AquaruimNum");
             Entry_AquaruimNum.Text = "";
 
-            Entry Entry_AquariumTypeId = (Entry)FindByName("Entry_AquariumTypeId");
-            Entry_AquariumTypeId.Text = "";
+            //Entry Entry_AquariumTypeId = (Entry)FindByName("Entry_AquariumTypeId");
+            //Entry_AquariumTypeId.Text = "";
         }
 
         /// <summary>
@@ -122,8 +130,8 @@ namespace MasterDetailTemplate.Views
             Entry Entry_AquaruimNum = (Entry)FindByName("Entry_AquaruimNum");
             string string_AquaruimNum = Entry_AquaruimNum.Text;
 
-            Entry Entry_AquariumTypeId = (Entry)FindByName("Entry_AquariumTypeId");
-            string string_AquariumTypeId = Entry_AquariumTypeId.Text;
+            //Entry Entry_AquariumTypeId = (Entry)FindByName("Entry_AquariumTypeId");
+            string string_AquariumTypeId = WaterType_Select.ToString();
 
             if (string_Email == null ||
                 string_Email == "" ||
@@ -373,6 +381,17 @@ namespace MasterDetailTemplate.Views
         }
 
         // ========================================================================== 設定模板的區塊
+
+        /// <summary>
+        /// 水質類型_被操作後後。
+        /// </summary>
+        private void Select_AquariumTypeId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 取得選擇的資料筆數
+            var selectedValue = Select_AquariumTypeId.SelectedItem as string;
+            WaterType_Select = WaterTypeStringToInt[selectedValue];
+        }
+
 
         /// <summary>
         /// 初始化要放資料的Grid
