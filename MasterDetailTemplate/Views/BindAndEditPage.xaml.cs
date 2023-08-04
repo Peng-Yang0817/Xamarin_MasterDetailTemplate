@@ -14,6 +14,8 @@ using MasterDetailTemplate.Models.ServerAccessSet;
 using System.Threading;
 using Newtonsoft.Json;
 using MasterDetailTemplate.Models.AquariumWaterSituationPage;
+using MasterDetailTemplate.Services;
+using Xamarin.Essentials;
 
 namespace MasterDetailTemplate.Views
 {
@@ -24,6 +26,12 @@ namespace MasterDetailTemplate.Views
         public string Auth001Id = "Auth001Id";
         public string AquariumUnitNum = "AquariumUnitNum";
         static private int WaterType_Select = 2;
+
+        // 準備轉跳頁面所需的物件
+        private static ContentPageActivationService ContentPageActivationService =
+            new ContentPageActivationService();
+        private static ContentNavigationService ContentNavigationService =
+            new ContentNavigationService(ContentPageActivationService);
 
         public static Dictionary<string, int> WaterTypeStringToInt = new Dictionary<string, int>();
 
@@ -58,7 +66,7 @@ namespace MasterDetailTemplate.Views
                 await Task.Delay(300);
                 Select_AquariumTypeId.SelectedIndex = 0;
                 // 取的該用戶所擁有的魚缸資料
-                List<AquaruimSituation> DataList = await GetMyAquaruimSituationsData();
+                List<ViewAquaruimSituation_ForMobile> DataList = await GetMyAquaruimSituationsData();
 
                 if (DataList != null)
                 {
@@ -81,6 +89,7 @@ namespace MasterDetailTemplate.Views
                 }
             }
             Appearing_RefreshView.IsRefreshing = false;
+            myRefreshView.IsRefreshing = false;
             Appearing_RefreshView.IsEnabled = false;
         }
 
@@ -209,6 +218,44 @@ namespace MasterDetailTemplate.Views
             }
         }
 
+        /// <summary>
+        /// 命名按鈕被點擊後，確認是否解綁
+        /// </summary>
+        private async void BtnCustomName_Clicked(object sender, EventArgs e)
+        {
+            // 先檢查用戶使否有該起網路
+            if (!IsNetworkAvailable())
+            {
+                await DisplayAlert("警告", "手機未連線至網路，請開啟網路連線後再試。", "確定");
+            }
+            else
+            {
+                var button = sender as Button;
+                // 取的按鈕的代表的魚缸編號，這裡因為找不到其他方法來賦予按鈕資料，所以暫且只有想到這方法
+                var aquariumUnitNum = button.ClassId;
+
+                // 將魚缸編號存入Properties，方便跳轉業面後能調用
+                app.Properties[AquariumUnitNum] = aquariumUnitNum;
+                await app.SavePropertiesAsync();
+
+
+                await ContentNavigationService.NavigateToAsync(ContentNavigationConstants.CustomAquariumName);
+            }
+        }
+
+        /// <summary>
+        /// 發出請求之前先檢查手機是否有網路連線
+        /// </summary>
+        public bool IsNetworkAvailable()
+        {
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+                return true;
+
+            return false;
+        }
+
         // ========================================================================== 取得伺服器回傳的綁定結果
 
         /// <summary>
@@ -272,12 +319,12 @@ namespace MasterDetailTemplate.Views
         /// <summary>
         /// 向Server取得使用者魚缸資訊，主要是取得該用戶有那些魚缸
         /// </summary>
-        public async Task<List<AquaruimSituation>> GetMyAquaruimSituationsData()
+        public async Task<List<ViewAquaruimSituation_ForMobile>> GetMyAquaruimSituationsData()
         {
             // 獲得Properties當中目前的使用者Auth001Id
             string _Auth001Id = app.Properties[Auth001Id].ToString();
 
-            List<AquaruimSituation> DataList = new List<AquaruimSituation>();
+            List<ViewAquaruimSituation_ForMobile> DataList = new List<ViewAquaruimSituation_ForMobile>();
 
             using (var wb = new WebClient())
             {
@@ -316,7 +363,7 @@ namespace MasterDetailTemplate.Views
                 string str = Encoding.UTF8.GetString(responseSendUse);
 
                 // 解析JSON string
-                DataList = JsonConvert.DeserializeObject<List<AquaruimSituation>>(str);
+                DataList = JsonConvert.DeserializeObject<List<ViewAquaruimSituation_ForMobile>>(str);
 
                 return DataList;
             }
@@ -383,9 +430,18 @@ namespace MasterDetailTemplate.Views
         // ========================================================================== 設定模板的區塊
 
         /// <summary>
-        /// 水質類型_被操作後後。
+        /// 頁面下滑刷新
         /// </summary>
-        private void Select_AquariumTypeId_SelectedIndexChanged(object sender, EventArgs e)
+        public void RefreshView_Refreshing(object sender, EventArgs args)
+        {
+            OnAppearing();
+        }
+
+
+            /// <summary>
+            /// 水質類型_被操作後後。
+            /// </summary>
+            private void Select_AquariumTypeId_SelectedIndexChanged(object sender, EventArgs e)
         {
             // 取得選擇的資料筆數
             var selectedValue = Select_AquariumTypeId.SelectedItem as string;
@@ -410,8 +466,8 @@ namespace MasterDetailTemplate.Views
                 },
                 ColumnDefinitions =
                  {
-                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
                     new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
                 }
             };
@@ -426,33 +482,9 @@ namespace MasterDetailTemplate.Views
         /// <param name="TargetRow">目前該資料要放在的Row</param>
         /// <param name="data">要塞入的該筆資料</param>
         /// <returns></returns>
-        public Grid ModifyGridToAddData(Grid grid_content, int TargetRow, AquaruimSituation data)
+        public Grid ModifyGridToAddData(Grid grid_content, int TargetRow, ViewAquaruimSituation_ForMobile data)
         {
-            // 序列 (欄0)
-            var stackLayout_RowNum = new StackLayout
-            {
-                Style = (Style)Application.Current.Resources["Table_Content_Style"],
-                Children =
-                {
-                    new StackLayout
-                    {
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        Children=
-                        {
-                            new Label
-                            {
-                                Text = (TargetRow+1).ToString(),
-                                TextColor = Color.Black,
-                                FontSize = 16,
-                                HorizontalTextAlignment = TextAlignment.Center,
-                                VerticalTextAlignment = TextAlignment.Center,
-                            }
-                        }
-                    }
-                }
-            };
-
-            // 魚缸編號 (欄1)
+            // 魚缸編號 (欄0)
             var stackLayout_AquaruimNum = new StackLayout
             {
                 Style = (Style)Application.Current.Resources["Table_Content_Style"],
@@ -476,16 +508,46 @@ namespace MasterDetailTemplate.Views
                 }
             };
 
+            // 名稱按鈕 (欄1)
+            Button button_customName = new Button
+            {
+                Text = data.customAquaruimName,
+                ClassId = data.AquariumUnitNum,
+                TextColor = Color.White,
+                FontSize = 10,
+                WidthRequest = 20,
+                HeightRequest = 40,
+                BackgroundColor = Color.FromHex("#31b0d5"),
+                CornerRadius = 10
+            };
+            button_customName.Clicked += BtnCustomName_Clicked;
+            var stackLayout_CustomName = new StackLayout
+            {
+                Style = (Style)Application.Current.Resources["Table_Content_Style"],
+                Children =
+                {
+                    new StackLayout
+                    {
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        Children=
+                        {
+                            button_customName
+                        }
+                    }
+                }
+            };
+
             // 刪除按鈕 (欄2)
             Button button = new Button
             {
                 Text = "解綁",
                 ClassId = data.AquariumUnitNum,
                 TextColor = Color.White,
-                FontSize = 16,
+                FontSize = 12,
                 WidthRequest = 20,
                 HeightRequest = 40,
                 BackgroundColor = Color.FromHex("#d45e5e"),
+                //BackgroundColor = Color.FromHex("#31b0d5"),
                 CornerRadius = 10
             };
 
@@ -506,13 +568,14 @@ namespace MasterDetailTemplate.Views
                 }
             };
 
-            grid_content.Children.Add(stackLayout_RowNum);
-            Xamarin.Forms.Grid.SetRow(stackLayout_RowNum, TargetRow);
-            Xamarin.Forms.Grid.SetColumn(stackLayout_RowNum, 0);
 
             grid_content.Children.Add(stackLayout_AquaruimNum);
             Xamarin.Forms.Grid.SetRow(stackLayout_AquaruimNum, TargetRow);
-            Xamarin.Forms.Grid.SetColumn(stackLayout_AquaruimNum, 1);
+            Xamarin.Forms.Grid.SetColumn(stackLayout_AquaruimNum, 0);
+
+            grid_content.Children.Add(stackLayout_CustomName);
+            Xamarin.Forms.Grid.SetRow(stackLayout_CustomName, TargetRow);
+            Xamarin.Forms.Grid.SetColumn(stackLayout_CustomName, 1);
 
             grid_content.Children.Add(stackLayout_Delete);
             Xamarin.Forms.Grid.SetRow(stackLayout_Delete, TargetRow);

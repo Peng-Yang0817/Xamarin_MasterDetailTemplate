@@ -5,64 +5,67 @@
              Title="綁定與編輯">
     <ContentPage.Content>
         <RefreshView x:Name="Appearing_RefreshView" RefreshColor="#2196f3" IsEnabled="False">
-            <ScrollView>
-                <StackLayout Margin="10,0,10,5">
-                    <!-- 解綁區塊=========================================================================== -->
-                    <!-- 寫死的區塊，可以不用動 -->
-                    <StackLayout Margin="10,20,10,0">
-                        <Grid x:Name="Aquarium_Edit_Grid"
+            <RefreshView x:Name="myRefreshView" RefreshColor="#2196f3"
+                         Refreshing="RefreshView_Refreshing">
+                <ScrollView>
+                    <StackLayout Margin="10,0,10,5">
+                        <!-- 解綁區塊=========================================================================== -->
+                        <!-- 寫死的區塊，可以不用動 -->
+                        <StackLayout Margin="10,20,10,0">
+                            <Grid x:Name="Aquarium_Edit_Grid"
                               ColumnSpacing="2" RowSpacing="1" Margin="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <StackLayout Grid.Row="0"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Row="0"
                                 Grid.Column="0"
                                  Grid.ColumnSpan="3"
                                 Style="{x:StaticResource Table_Title_Style}">
-                                <Label Text="魚缸編輯" TextColor="Wheat" FontSize="24" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
+                                    <Label Text="魚缸編輯" TextColor="Wheat" FontSize="24" HorizontalTextAlignment="Center"/>
+                                </StackLayout>
 
-                            <!-- 上方是寫死的區塊，可以不用動 -->
-                            <StackLayout Grid.Row="1"
+                                <!-- 上方是寫死的區塊，可以不用動 -->
+
+                                <StackLayout Grid.Row="1"
                                          Grid.Column="0"
                                          Style="{x:StaticResource Table_Title_Style}">
-                                <StackLayout VerticalOptions="CenterAndExpand">
-                                    <Label Text="序列" TextColor="Wheat" FontSize="16" 
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label Text="魚缸編號" TextColor="Wheat" FontSize="16" 
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"/>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                            <StackLayout Grid.Row="1"
+                                <StackLayout Grid.Row="1"
                                          Grid.Column="1"
                                          Style="{x:StaticResource Table_Title_Style}">
-                                <StackLayout VerticalOptions="CenterAndExpand">
-                                    <Label Text="魚缸編號" TextColor="Wheat" FontSize="16" 
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label Text="名稱" TextColor="Wheat" FontSize="16" 
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"/>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                            <StackLayout Grid.Row="1"
+                                <StackLayout Grid.Row="1"
                                          Grid.Column="2"
                                          Style="{x:StaticResource Table_Title_Style}">
-                                <StackLayout VerticalOptions="CenterAndExpand">
-                                    <Label Text="刪除" TextColor="Wheat" FontSize="16" 
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label Text="刪除" TextColor="Wheat" FontSize="16" 
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"/>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                        </Grid>
-                    </StackLayout>
+                            </Grid>
+                        </StackLayout>
 
-                    <!-- 塞資料的區塊!!! -->
-                    <StackLayout Margin="10,0,10,0"
+                        <!-- 塞資料的區塊!!! -->
+                        <StackLayout Margin="10,0,10,0"
                                  x:Name="stackLayout_DataList">
-                        <!-- 
+                            <!-- 
                         <Grid ColumnSpacing="2" RowSpacing="1" Margin="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
@@ -106,47 +109,47 @@
                             
                         </Grid>
                     -->
-                    </StackLayout>
+                        </StackLayout>
 
 
-                    <!-- 綁定魚缸區塊=========================================================================== -->
-                    <Frame BackgroundColor="#f2f2f2" BorderColor="Gray" CornerRadius="12" Margin="10">
-                        <StackLayout BackgroundColor="#f2f2f2">
-                            <StackLayout>
-                                <Label Text="綁定魚缸" HorizontalOptions="Center" 
+                        <!-- 綁定魚缸區塊=========================================================================== -->
+                        <Frame BackgroundColor="#f2f2f2" BorderColor="Gray" CornerRadius="12" Margin="10">
+                            <StackLayout BackgroundColor="#f2f2f2">
+                                <StackLayout>
+                                    <Label Text="綁定魚缸" HorizontalOptions="Center" 
                                        FontSize="24"
                                        FontAttributes="Bold"/>
-                            </StackLayout>
-                            <!-- Email -->
-                            <Label Text="使用者Email" 
+                                </StackLayout>
+                                <!-- Email -->
+                                <Label Text="使用者Email" 
                                    FontSize="Medium"
                                    HorizontalOptions="Start"
                                    Margin="0,20,0,5"/>
-                            <Entry x:Name="Entry_Email"
+                                <Entry x:Name="Entry_Email"
                                     Placeholder="Email"
                                     Margin="0,0,0,20"/>
 
-                            <Label Text="使用者密碼" 
+                                <Label Text="使用者密碼" 
                                    FontSize="Medium"
                                    HorizontalOptions="Start"
                                    Margin="0,20,0,5"/>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <Entry x:Name="Entry_Password"
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Entry x:Name="Entry_Password"
                                         Placeholder="Password"
                                         Margin="0,0,0,20"
                                         IsPassword ="True"
                                         MaxLength="16"
                                         Grid.Row="0"
                                         Grid.Column="0"/>
-                                <Button x:Name="togglePassword"
+                                    <Button x:Name="togglePassword"
                                         Text="👁‍🗨"
                                         FontSize="Medium"
                                         BackgroundColor="#f2f2f2"
@@ -155,43 +158,43 @@
                                         CornerRadius="8"
                                         Grid.Row="0"
                                         Grid.Column="1" Margin="0,0,0,20"/>
-                            </Grid>
-                            
+                                </Grid>
 
-                            <Label Text="魚缸編號" 
+
+                                <Label Text="魚缸編號" 
                                    FontSize="Medium"
                                    HorizontalOptions="Start"
                                    Margin="0,20,0,5"/>
-                            <Entry x:Name="Entry_AquaruimNum"
+                                <Entry x:Name="Entry_AquaruimNum"
                                     Placeholder="對應魚缸完整的16位元英數組合"
                                     Margin="0,0,0,20"
                                     MaxLength="16"/>
 
-                            <Label Text="水質類型" 
+                                <Label Text="水質類型" 
                                    FontSize="Medium"
                                    HorizontalOptions="Start"
                                    Margin="0,20,0,0"/>
-                            <Label Text="   飼養的水質環境" 
+                                <Label Text="   飼養的水質環境" 
                                    FontSize="16"
                                    HorizontalOptions="Start"
                                    Margin="0,0,0,5"/>
-                            <!--<Entry x:Name="Entry_AquariumTypeId"
+                                <!--<Entry x:Name="Entry_AquariumTypeId"
                                     Placeholder="選擇輸入上方介紹的對應數字即可"
                                     Margin="0,0,0,20"
                                     MaxLength="1"/>-->
-                            <Picker x:Name="Select_AquariumTypeId"
+                                <Picker x:Name="Select_AquariumTypeId"
                                             SelectedIndexChanged="Select_AquariumTypeId_SelectedIndexChanged"
                                             VerticalOptions="Start">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>中性</x:String>
-                                        <x:String>弱酸</x:String>
-                                        <x:String>弱鹼</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>中性</x:String>
+                                            <x:String>弱酸</x:String>
+                                            <x:String>弱鹼</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
 
-                            <Button x:Name="btnSend"
+                                <Button x:Name="btnSend"
                                     Text="送出"
                                     BackgroundColor="#74bbf3"
                                     TextColor="White"
@@ -199,12 +202,12 @@
                                     CornerRadius="8"
                                     WidthRequest="120"
                                     HeightRequest="44">
-                            </Button>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-            </ScrollView>
-
+                                </Button>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+            </RefreshView>
         </RefreshView>
     </ContentPage.Content>
 </ContentPage>

@@ -74,7 +74,7 @@ namespace MasterDetailTemplate.Views
         {
             EntryLength = e.NewTextValue.Length;
 
-            if (e.NewTextValue.Length != 16)
+            if (e.NewTextValue.Length > 0)
             {
                 btnSearch.BackgroundColor = Color.FromHex("#74bbf3");
                 btnSearch.TextColor = Color.FromHex("#ffffff");
@@ -100,50 +100,43 @@ namespace MasterDetailTemplate.Views
             }
             else
             {
-                if (EntryLength != 16)
+                Appearing_RefreshView.IsEnabled = true;
+                Appearing_RefreshView.IsRefreshing = true;
+                await Task.Delay(300);
+
+                // 將用戶填入的魚缸編號取出
+                Entry Entry_txtFishTankNum = (Entry)FindByName("txtFishTankNum");
+                string string_txtFishTankNum = Entry_txtFishTankNum.Text;
+
+                // 向Server抓取資料
+                List<AquaruimNumBindHistory> DataList = await GetMyChartNeedData(string_txtFishTankNum);
+
+                if (DataList != null)
                 {
-                    await DisplayAlert("警告", "請輸入完整的16位元組。", "確定");
-                }
-                else
-                {
-                    Appearing_RefreshView.IsEnabled = true;
-                    Appearing_RefreshView.IsRefreshing = true;
-                    await Task.Delay(300);
+                    // 紀錄資料長度
+                    int DataLength = DataList.Count;
 
-                    // 將用戶填入的魚缸編號取出
-                    Entry Entry_txtFishTankNum = (Entry)FindByName("txtFishTankNum");
-                    string string_txtFishTankNum = Entry_txtFishTankNum.Text;
-
-                    // 向Server抓取資料
-                    List<AquaruimNumBindHistory> DataList = await GetMyChartNeedData(string_txtFishTankNum);
-
-                    if (DataList != null)
+                    if (DataLength != 0)
                     {
-                        // 紀錄資料長度
-                        int DataLength = DataList.Count;
+                        // 初始化一個Grid
+                        Grid grid_content = InitGridSet();
 
-                        if (DataLength != 0)
+                        // 將抓到的資料放入Grid中
+                        for (int i = 0; i < DataLength; i++)
                         {
-                            // 初始化一個Grid
-                            Grid grid_content = InitGridSet();
-
-                            // 將抓到的資料放入Grid中
-                            for (int i = 0; i < DataLength; i++)
-                            {
-                                ModifyGridToAddData(grid_content, i, DataList[i]);
-                            }
-
-                            AddGridInToStackLayout(grid_content);
+                            ModifyGridToAddData(grid_content, i, DataList[i]);
                         }
-                        else
-                        {
-                            await DisplayAlert("提示", "查無該魚缸的綁定紀錄。", "確定");
-                        }
+
+                        AddGridInToStackLayout(grid_content);
                     }
-
-                    Appearing_RefreshView.IsRefreshing = false;
-                    Appearing_RefreshView.IsEnabled = false;
+                    else
+                    {
+                        await DisplayAlert("提示", "查無該魚缸的綁定紀錄。", "確定");
+                    }
                 }
+
+                Appearing_RefreshView.IsRefreshing = false;
+                Appearing_RefreshView.IsEnabled = false;
             }
         }
 
@@ -321,6 +314,8 @@ namespace MasterDetailTemplate.Views
             using (var wb = new WebClient())
             {
                 var dataSendUse = new NameValueCollection();
+                // 獲得Properties當中目前的使用者Auth001Id
+                string _Auth001Id = app.Properties[Auth001Id].ToString();
 
                 string urlSendUse = server.ServerIP + "/MobileService/GetAquaruimNumBindHistory";
 
@@ -328,6 +323,7 @@ namespace MasterDetailTemplate.Views
                 wb.Headers.Add("Authorization", Bearer);
 
                 // 準備魚缸編號，用於查詢
+                dataSendUse["Auth001Id"] = _Auth001Id;
                 dataSendUse["AquariumNum"] = AquariumNum;
 
                 // 使用 CancellationTokenSource 取消等待

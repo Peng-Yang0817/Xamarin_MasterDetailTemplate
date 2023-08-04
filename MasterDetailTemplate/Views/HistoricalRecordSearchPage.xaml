@@ -10,7 +10,7 @@
                     <!-- 上方搜尋區塊 -->
                     <Frame BackgroundColor="#ffe6dc" BorderColor="Gray" CornerRadius="8" Margin="10">
                         <StackLayout BackgroundColor="#ffe6dc">
-                            <Label Text="輸入查詢的魚缸編號(16字符)" 
+                            <Label Text="輸入魚缸編號(16字符)" 
                                    FontAttributes="Bold"
                                    TextColor="#3d3d3d"
                                    FontSize="20"
@@ -18,7 +18,7 @@
                                    Margin="0,40,0,30"/>
 
                             <Entry x:Name="txtFishTankNum"
-                            Placeholder="魚缸編號"
+                            Placeholder="魚缸編號或魚缸名稱"
                             TextChanged="TxtFishTankNumber_TextChanged"
                             Margin="0,0,0,30"
                             MaxLength="16"/>

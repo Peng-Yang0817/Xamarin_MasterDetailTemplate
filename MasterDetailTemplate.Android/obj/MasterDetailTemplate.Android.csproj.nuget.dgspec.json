@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj": {}
+    "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj": {}
   },
   "projects": {
-    "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj": {
+    "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj",
+        "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj",
         "projectName": "MasterDetailTemplate.Android",
-        "projectPath": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj",
+        "projectPath": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\MasterDetailTemplate.Android.csproj",
         "packagesPath": "C:\\Users\\tcher\\.nuget\\packages\\",
-        "outputPath": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\obj\\",
+        "outputPath": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
-                "projectPath": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj"
+              "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
+                "projectPath": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj"
               }
             }
           }
@@ -58,14 +58,14 @@
         }
       }
     },
-    "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
+    "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
+        "projectUniqueName": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
         "projectName": "MasterDetailTemplate",
-        "projectPath": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
+        "projectPath": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
         "packagesPath": "C:\\Users\\tcher\\.nuget\\packages\\",
-        "outputPath": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\obj\\",
+        "outputPath": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

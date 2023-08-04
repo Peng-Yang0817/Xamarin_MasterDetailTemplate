@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RAHmgU9EhSukxcwAACB8bNLWp1ktW8DwNk7szwvUQTNSU5q0Q8l6+FAK1yg/iCJeA3RDzlaiSCRFkmxEhWzYsw==",
+  "dgSpecHash": "5lkNCD3hTCeO716mMS/PkgPmhmQJx4dBamqiC9ezDl3fjmlXsZQQrr8tXJlgLSkbV4sl4vHC1ha3PPVHND79yA==",
   "success": true,
-  "projectFilePath": "C:\\Codding\\開發水質管控\\APP\\0607\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
+  "projectFilePath": "C:\\Codding\\開發水質管控\\APP\\0715\\Xamarin_MasterDetailTemplate\\MasterDetailTemplate\\MasterDetailTemplate.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tcher\\.nuget\\packages\\behaviors.forms\\1.4.0\\behaviors.forms.1.4.0.nupkg.sha512",
     "C:\\Users\\tcher\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",

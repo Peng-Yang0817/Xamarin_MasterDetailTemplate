@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterDetailTemplate.Views.CustomAquariumName"
+             Title="定義魚缸名稱">
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView x:Name="Appearing_RefreshView" RefreshColor="#2196f3" IsEnabled="False">
+                <!-- 綁定魚缸區塊=========================================================================== -->
+                <Frame BackgroundColor="#f2f2f2" BorderColor="Gray" CornerRadius="12" Margin="10">
+                    <StackLayout BackgroundColor="#f2f2f2">
+                        <StackLayout>
+                            <Label x:Name="AquariumNum" HorizontalOptions="Center" 
+                                       FontSize="24"
+                                       FontAttributes="Bold"/>
+                        </StackLayout>
+                        <!-- Email -->
+                        <Label Text="魚缸名稱:" 
+                                   FontSize="Medium"
+                                   HorizontalOptions="Start"
+                                   Margin="0,20,0,5"/>
+                        <Entry x:Name="CustomName"
+                                    Placeholder="請輸入魚缸名稱"
+                                    Margin="0,0,0,20"/>
+
+                        <Button x:Name="btnSend"
+                                    Text="Send"
+                                    BackgroundColor="#74bbf3"
+                                    TextColor="White"
+                                    Clicked="BtnSend_Clicked"
+                                    CornerRadius="8"
+                                    WidthRequest="120"
+                                    HeightRequest="44">
+                        </Button>
+                    </StackLayout>
+                </Frame>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

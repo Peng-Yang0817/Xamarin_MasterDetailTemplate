@@ -38,6 +38,7 @@ namespace MasterDetailTemplate.Services
         public const string DetailPage = nameof(Views.DetailPage);
         public const string ChartViewPage = nameof(Views.ChartViewPage);
         public const string NotifyRangeSetDetailPage = nameof(Views.NotifyRangeSetDetailPage);
+        public const string CustomAquariumName = nameof(Views.CustomAquariumName);
 
         /// <summary>
         /// 頁面鍵- 頁面類型字典
@@ -47,7 +48,8 @@ namespace MasterDetailTemplate.Services
                 { AboutPage,typeof(AboutPage) },
                 { DetailPage,typeof(DetailPage) },
                 { ChartViewPage,typeof(ChartViewPage) },
-                { NotifyRangeSetDetailPage,typeof(NotifyRangeSetDetailPage) }
+                { NotifyRangeSetDetailPage,typeof(NotifyRangeSetDetailPage) },
+                { CustomAquariumName,typeof(CustomAquariumName) }
             };
     }
 }
